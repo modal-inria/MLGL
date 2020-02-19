@@ -1,0 +1,47 @@
+Version 0.5 (24/09/2018): 
+- documentation correction
+- update DESCRIPTION file with authors
+- add print and summary functions for MLGL
+- add plot, print and summary functions for fullProcess
+- add a formula version of MLGL and fullProcess functions
+- add HMT function with plot, pritn and summary
+- remove logistic loss from fullProcess and remove test for logistic problem
+
+Version 0.4 (14/01/2017): 
+- add logistic loss in MLGL, cv.MLGL, stability and overlap
+- add test for logistic loss
+- add logistic loss in fullProcess
+- add sample size parameter in fullProcess
+
+Version 0.3.2 (30/09/2016): 
+- optimization of hierarchicalFWER
+
+Version 0.3.1 (22/09/2016):
+- bug correction in hierarchicalFWER
+- optimization of fullProcess
+
+Version 0.3 (09/09/2016):
+- rename the package into MLGL
+- change name of functions including "HCgglasso"
+
+Version 0.2.5 (25/08/2016):
+- change parameters of selFDR and selFWER functions
+
+Version 0.2.4 (01/08/2016):
+- add hierarchical testing procedure
+- add fullProcess function performing HC + Glasso + Hierarchical Testing 
+- correction in stability.HCgglasso for the generation of lambda values 
+
+Version 0.2.3 (20/01/2016):
+- change the level information in HCgglasso structure output
+
+Version 0.2.2 (06/10/2015):
+- correction for infinite weight in weightLevelGroup
+- use hclust from fastcluster package
+- update documentation
+
+Version 0.2.1:
+- in levelMinWeight function, change minLevelWeight in sqrt(minLevelWeight)
+
+Version 0.2:
+- first version of HCgglasso
