@@ -1,0 +1,23 @@
+language: r
+sudo: true
+cache: packages
+cran: http://cran.rstudio.com
+
+os:
+  - linux
+  - osx
+  
+r:
+  - oldrel
+  - release
+  - devel
+
+matrix:
+  exclude:
+  - r: devel
+    os: osx
+   
+script:
+  - R CMD build .
+  - R CMD check *.tar.gz --as-cran
+  
