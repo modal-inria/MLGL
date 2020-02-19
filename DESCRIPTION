@@ -11,6 +11,7 @@ Authors@R: c(person("Quentin", "Grimonprez", role = c("aut", "cre"), email = "qu
              person("Hui","Zou", role = "ctb"))
 Copyright: Inria
 Description: It implements a new procedure of variable selection in the context of redundancy between explanatory variables, which holds true with high dimensional data (Grimonprez et al. (2018) <https://hal.inria.fr/hal-01857242>).
+BugReports: https://github.com/modal-inria/MLGL/issues
 License: GPL (>=2)
 Imports:
     gglasso,
