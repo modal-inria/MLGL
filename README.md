@@ -13,13 +13,13 @@ This package  implements a new procedure of variable selection in the context of
 ## Installation
 
 From github:
-```
+``` r
 library(devtools)
 install_github("modal-inria/MLGL")
 ```
 
 From CRAN:
-```
+``` r
 install.packages("MLGL", repos = "https://cran.rstudio.com")
 ```
 
