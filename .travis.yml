@@ -2,6 +2,7 @@ language: r
 cache: packages
 cran: http://cran.rstudio.com
 dist: bionic
+warnings_are_errors: true
 
 os:
   - linux
@@ -17,7 +18,3 @@ jobs:
   - r: devel
     os: osx
    
-script:
-  - R CMD build .
-  - R CMD check *.tar.gz --as-cran
-  

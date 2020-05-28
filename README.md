@@ -7,7 +7,7 @@
 The code was originally on an [R-forge repository](https://r-forge.r-project.org/projects/hcgglasso/).
 
 
-This package  implements a new procedure of variable selection in the context of redundancy between explanatory variables, which holds true with high dimensional data.
+This package implements a new procedure of variable selection in the context of redundancy between explanatory variables, which holds true with high dimensional data.
 
 
 ## Installation
@@ -44,5 +44,4 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 ## References
 
 *  Q. Grimonprez, S. Blanck, A. Celisse, G. Marot, MLGL: An R package implementing correlated variable selection by hierarchical clustering and group-Lasso. https://hal.inria.fr/hal-01857242
-
 
