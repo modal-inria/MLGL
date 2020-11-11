@@ -23,6 +23,12 @@ From CRAN:
 install.packages("MLGL", repos = "https://cran.rstudio.com")
 ```
 
+### Dependencies
+
+``` r
+install.packages(c("gglasso", "MASS", "Matrix", "fastcluster", "FactoMineR", "parallelDist"), repos = "https://cran.rstudio.com")
+```   
+
 ## Credits
 
 **MLGL** is developed by Quentin Grimonprez, Guillemette Marot, Alain Celisse and Samuel Blanck.
