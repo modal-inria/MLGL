@@ -191,7 +191,7 @@ groupHier <- function(group, var, addRoot = FALSE) {
     lcomp <- sapply(GRCOMP, length)
 
     if (any(lcomp > 0)) {
-      groupComp <- -rep(1:length(lcomp[lcomp != 0]), lcomp[lcomp != 0])
+      groupComp <- -rep(seq_along(lcomp[lcomp != 0]), lcomp[lcomp != 0])
       varComp <- unlist(GRCOMP)
     }
   }

@@ -6,7 +6,7 @@
 #   REJECT <- list()
 #   nbReject <- rep(0, length(res$lambda))
 #   prevSelGroup = selGroup <- c()
-#   for(i in 1:length(res$lambda))
+#   for(i in seq_along(res$lambda))
 #   {
 #     # if no groups are selected we do nothing
 #     if(length(res$group[[i]])>0)

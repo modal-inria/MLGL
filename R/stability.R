@@ -136,11 +136,11 @@ stability.MLGL <- function(X, y, B = 50, fraction = 0.5, hc = NULL, lambda = NUL
     t3 <- proc.time()
 
     # record selected groups
-    for (indlam in 1:length(lambda))
+    for (iLambda in seq_along(lambda))
     {
-      non0 <- which(res$beta[, indlam] != 0) # non 0 coefficients
+      non0 <- which(res$beta[, iLambda] != 0) # non 0 coefficients
       non0gr <- unique(prelim$group[non0]) # associated non 0 groups
-      proba[indlam, non0gr] <- proba[indlam, non0gr] + 1 # increment counter of selected groups
+      proba[iLambda, non0gr] <- proba[iLambda, non0gr] + 1 # increment counter of selected groups
     } # fin for lambda
     t2b <- proc.time()
 

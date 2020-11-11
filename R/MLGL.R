@@ -120,7 +120,7 @@ MLGL <- function(X, y, hc = NULL, lambda = NULL, weightLevel = NULL, weightSizeG
   res2$nGroup <- sapply(res2$group, FUN = function(x) {
     length(unique(x))
   })
-  res2$beta <- lapply(1:length(res$lambda), FUN = function(x) {
+  res2$beta <- lapply(seq_along(res$lambda), FUN = function(x) {
     res$beta[non0[[x]], x]
   })
   res2$b0 <- res$b0
@@ -371,7 +371,7 @@ preliminaryStep <- function(hc, weightLevel = NULL, weightSizeGroup = NULL, size
   # need a correction when some groups have to be ignored
   if (length(ignoredGroup) > 0) {
     difNumber <- rep(0, length(group))
-    for (i in 1:length(ignoredGroup))
+    for (i in seq_along(ignoredGroup))
     {
       ind <- which(group > ignoredGroup[i])
       difNumber[ind] <- difNumber[ind] - 1

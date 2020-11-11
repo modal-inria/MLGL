@@ -97,7 +97,7 @@ overlapgglasso <- function(X, y, var, group, lambda = NULL, weight = NULL, loss 
   res2$nGroup <- sapply(res2$group, FUN = function(x) {
     length(unique(x))
   })
-  res2$beta <- lapply(1:length(res$lambda), FUN = function(x) {
+  res2$beta <- lapply(seq_along(res$lambda), FUN = function(x) {
     res$beta[non0[[x]], x]
   })
   res2$b0 <- res$b0
