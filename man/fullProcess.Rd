@@ -82,10 +82,8 @@ Divide the n individuals in two samples. Then the three following steps are done
 # least square loss
 set.seed(42)
 X <- simuBlockGaussian(50, 12, 5, 0.7)
-y <- X[,c(2,7,12)] \%*\% c(2,2,-2) + rnorm(50, 0, 0.5)
+y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 res <- fullProcess(X, y)
-
-
 }
 \seealso{
 \link{MLGL}, \link{hierarchicalFDR}, \link{hierarchicalFWER}, \link{selFDR}, \link{selFWER}

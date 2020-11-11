@@ -28,7 +28,7 @@ a list containing :
 Select groups from hierarchical testing procedure with FDR control (\link{hierarchicalFDR})
 }
 \details{
-See the reference for mode details about the method. 
+See the reference for mode details about the method.
 
 If each family is controlled at a level alpha, we have the following control :
 FDR control of full tree : alpha * delta * 2  (delta = 1.44)
@@ -36,13 +36,11 @@ FDR control of outer node : alpha * L * delta * 2 (delta = 1.44)
 }
 \examples{
 set.seed(42)
-X = simuBlockGaussian(50,12,5,0.7)
-y = X[,c(2,7,12)]\%*\%c(2,2,-2) + rnorm(50,0,0.5)
-res = MLGL(X,y)
-test = hierarchicalFDR(X, y, res$group[[20]], res$var[[20]])
-sel = selFDR (test, alpha = 0.05)
-
-
+X <- simuBlockGaussian(50, 12, 5, 0.7)
+y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
+res <- MLGL(X, y)
+test <- hierarchicalFDR(X, y, res$group[[20]], res$var[[20]])
+sel <- selFDR(test, alpha = 0.05)
 }
 \references{
 Yekutieli, Daniel. "Hierarchical False Discovery Rate-Controlling Methodology." Journal of the American Statistical Association 103.481 (2008): 309-16.

@@ -25,5 +25,4 @@ Hierarchical Clustering with distance matrix computed using bootstrap replicates
 }
 \examples{
 hc <- bootstrapHclust(USArrests, nCore = 1)
-
 }

@@ -33,7 +33,7 @@ set.seed(42)
 X <- simuBlockGaussian(50, 12, 5, 0.7)
 
 # Generate a response variable
-y <- X[,c(2,7,12)]\%*\%c(2,2,-2) + rnorm(50, 0, 0.5)
+y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 
 # Apply stability.MLGL method
 res <- stability.MLGL(X, y)

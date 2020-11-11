@@ -48,7 +48,7 @@ a MLGL object containing :
   \item{group}{A list containing the values index of selected groups for each values of \code{lambda}}
   \item{nVar}{A vector containing the number of non zero coefficients for each values of \code{lambda}}
   \item{nGroup}{A vector containing the number of non zero groups for each values of \code{lambda}}
-  \item{structure}{A list containing 3 vectors. var : all variables used. group : associated groups. 
+  \item{structure}{A list containing 3 vectors. var : all variables used. group : associated groups.
   weight : weight associated with the different groups.}
   \item{time}{computation time}
   \item{dim}{dimension of \code{X}}
@@ -58,7 +58,7 @@ a MLGL object containing :
 Group-lasso with overlapping groups
 }
 \details{
-Use a group-lasso algorithm (see \code{\link{gglasso}}) to solve a group-lasso with overlapping groups. 
+Use a group-lasso algorithm (see \code{\link{gglasso}}) to solve a group-lasso with overlapping groups.
 Each variable j of the original matrix \code{X} is paste k(j) times in a new dataset with k(j) the number of different groups containing the variable j.
 The new dataset is used to solve the group-lasso with overlapping groups running a group-lasso algorithm.
 }
@@ -66,20 +66,16 @@ The new dataset is used to solve the group-lasso with overlapping groups running
 # Least square loss
 set.seed(42)
 X <- simuBlockGaussian(50, 12, 5, 0.7)
-y <- X[, c(2, 7, 12)]\%*\%c(2, 2, -2) + rnorm(50, 0, 0.5)
+y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 var <- c(1:60, 1:8, 7:15)
 group <- c(rep(1:12, each = 5), rep(13, 8), rep(14, 9))
 res <- overlapgglasso(X, y, var, group)
 
 # Logistic loss
-y <- 2*(rowSums(X[,1:4])>0)-1
+y <- 2 * (rowSums(X[, 1:4]) > 0) - 1
 var <- c(1:60, 1:8, 7:15)
 group <- c(rep(1:12, each = 5), rep(13, 8), rep(14, 9))
 res <- overlapgglasso(X, y, var, group, loss = "logit")
-
-
-
-
 }
 \seealso{
 \code{\link{listToMatrix}}

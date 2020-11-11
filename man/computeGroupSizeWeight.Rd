@@ -22,11 +22,10 @@ set.seed(42)
 # Simulate gaussian data with block-diagonal variance matrix containing 12 blocks of size 5
 X <- simuBlockGaussian(50, 12, 5, 0.7)
 # Generate a response variable
-y <- X[,c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
+y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 # use 20 as the maximal number of group
 hc <- hclust(dist(t(X)))
 w <- computeGroupSizeWeight(hc, sizeMax = 20)
 # Apply MLGL method
 res <- MLGL(X, y, hc = hc, weightSizeGroup = w)
-
 }

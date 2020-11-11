@@ -2,28 +2,26 @@
 % Please edit documentation in R/uniqueGroupHclust.R
 \name{uniqueGroupHclust}
 \alias{uniqueGroupHclust}
-\title{Find all unique groups in \code{\link{hclust}}  results}
+\title{Find all unique groups in \code{\link{hclust}} results}
 \usage{
 uniqueGroupHclust(hc)
 }
 \arguments{
-\item{hc}{output of \code{\link{hclust}}  function}
+\item{hc}{output of \code{\link{hclust}} function}
 }
 \value{
-A list containing :
+A list containing:
 \describe{
   \item{indexGroup}{Vector containing the index of variables.}
   \item{varGroup}{Vector containing the index of the group of each variable.}
 }
 }
 \description{
-Find all unique groups in \code{\link{hclust}}  results
+Find all unique groups in \code{\link{hclust}} results
 }
 \examples{
-hc <- hclust(dist(USArrests), "ave")
+hc <- hclust(dist(USArrests), "average")
 res <- uniqueGroupHclust(hc)
-
-
 }
 \author{
 Quentin Grimonprez

@@ -57,7 +57,7 @@ Apply Hierarchical Multiple Testing procedure on a \code{\link{MLGL}} object
 \examples{
 set.seed(42)
 X <- simuBlockGaussian(50, 12, 5, 0.7)
-y <- X[,c(2,7,12)] \%*\% c(2,2,-2) + rnorm(50, 0, 0.5)
+y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 res <- MLGL(X, y)
 
 # perform hierarchical testing with FWER control
@@ -65,8 +65,6 @@ out <- HMT(res, X, y, alpha = 0.05)
 
 # test a new value of alpha for a specific lambda
 selFWER(out$hierTest[[60]], alpha = 0.1)
-
-
 }
 \seealso{
 \link{hierarchicalFWER} \link{hierarchicalFDR} \link{selFWER} \link{selFDR}

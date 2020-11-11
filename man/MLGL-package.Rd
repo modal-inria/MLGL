@@ -19,10 +19,9 @@ The whole process can be run with the \link{fullProcess} function.
 # Simulate gaussian data with block-diagonal variance matrix containing 12 blocks of size 5
 X <- simuBlockGaussian(50, 12, 5, 0.7)
 # Generate a response variable
-y <- X[,c(2,7,12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
+y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 # Apply MLGL method
 res <- MLGL(X, y)
-
 }
 \references{
 "MLGL: An R package implementing correlated variable selection by hierarchical clustering and group-Lasso.", Quentin Grimonprez, Samuel Blanck, Alain Celisse, Guillemette Marot (2018). \url{https://hal.inria.fr/hal-01857242}
@@ -31,7 +30,7 @@ res <- MLGL(X, y)
 \link{MLGL}, \link{cv.MLGL}, \link{fullProcess}, \link{hierarchicalFWER}
 }
 \author{
-Quentin Grimonprez 
+Quentin Grimonprez
 
 Maintainer: Quentin Grimonprez  <quentin.grimonprez@inria.fr>
 }

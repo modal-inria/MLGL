@@ -69,7 +69,7 @@ a MLGL object containing :
   \item{group}{A list containing the values index of selected groups for each values of \code{lambda}}
   \item{nVar}{A vector containing the number of non zero coefficients for each values of \code{lambda}}
   \item{nGroup}{A vector containing the number of non zero groups for each values of \code{lambda}}
-  \item{structure}{A list containing 3 vectors. var : all variables used. group : associated groups. 
+  \item{structure}{A list containing 3 vectors. var : all variables used. group : associated groups.
   weight : weight associated with the different groups.
   level : for each group, the corresponding level of the hierarchy where it appears and disappears. 3 indicates the level with a partition of 3 groups.}
   \item{time}{computation time}
@@ -86,10 +86,9 @@ set.seed(42)
 # Simulate gaussian data with block-diagonal variance matrix containing 12 blocks of size 5
 X <- simuBlockGaussian(50, 12, 5, 0.7)
 # Generate a response variable
-y <- X[,c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
+y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 # Apply MLGL method
 res <- MLGL(X, y)
-
 }
 \seealso{
 \link{cv.MLGL}, \link{stability.MLGL}, \link{listToMatrix}, \link{predict.MLGL}, \link{coef.MLGL}, \link{plot.cv.MLGL}

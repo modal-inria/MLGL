@@ -22,7 +22,7 @@ a matrix of size n *(nBlock*sizeBlock) containing the samples
 simulate n samples from a gaussian multivariate law with 0 vector mean and block diagonal variance matrix with diagonal 1 and block of rho.
 }
 \examples{
-X = simuBlockGaussian(50,12,5,0.7)
+X <- simuBlockGaussian(50, 12, 5, 0.7)
 }
 \author{
 Quentin Grimonprez
