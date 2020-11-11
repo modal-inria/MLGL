@@ -40,7 +40,7 @@ plot.MLGL <- function(x, log.lambda = FALSE, lambda.lines = FALSE, ...) {
 
   bet <- listToMatrix(x, "lambda")
 
-  # abscissa : log or not ?
+  # abscissa: log or not ?
   absc <- x$lambda
   if (log.lambda) {
     absc <- log(absc)
@@ -90,7 +90,7 @@ plot.cv.MLGL <- function(x, log.lambda = FALSE, ...) {
     stop("log must be a boolean.")
   }
 
-  # abscissa : log or not ?
+  # abscissa: log or not ?
   absc <- x$lambda
   lam <- c(x$lambda.min, x$lambda.1se)
   if (log.lambda) {
@@ -115,7 +115,7 @@ plot.cv.MLGL <- function(x, log.lambda = FALSE, ...) {
 #' @param threshold Threshold for selection frequency
 #' @param ... Other parameters for plot function
 #'
-#' @return A list containing :
+#' @return A list containing:
 #' \describe{
 #' \item{var}{Index of selected variables for the given threshold.}
 #' \item{group}{Index of the associated group.}
@@ -158,7 +158,7 @@ plot.stability.MLGL <- function(x, log.lambda = FALSE, threshold = 0.75, ...) {
     stop("threshold must be a positive real lesser than 1.")
   }
 
-  # abscissa : log or not ?
+  # abscissa: log or not ?
   absc <- x$lambda
   if (log.lambda) {
     absc <- log(absc)

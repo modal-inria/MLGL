@@ -1,33 +1,34 @@
 # find root of the tree
 findRoot <- function(hierMatrix) {
-  # indice of groups containing other groups
-  indcont <- which(rowSums(hierMatrix) != 1)
-  # indice of groups not included in a group
-  indtop <- which(colSums(hierMatrix) == 1)
+  # indices of groups containing other groups
+  indCont <- which(rowSums(hierMatrix) != 1)
+  # indices of groups not included in a group
+  indTop <- which(colSums(hierMatrix) == 1)
 
-  # indice of groups at the top of a hierarchy
-  indGrTop <- intersect(indtop, indcont)
+  # indices of groups at the top of a hierarchy
+  indGrTop <- intersect(indTop, indCont)
 
   return(indGrTop)
 }
 
 # find roots of trees and isolated groups
 findRoot2 <- function(hierMatrix) {
-  # indice of groups not included in a group
-  indtop <- which(colSums(hierMatrix) == 1)
-  names(indtop) <- NULL
-  return(indtop)
+  # indices of groups not included in a group
+  indTop <- which(colSums(hierMatrix) == 1)
+  names(indTop) <- NULL
+  
+  return(indTop)
 }
 
-# find isolated groups (not belongging to hierarchical trees)
+# find isolated groups (not belonging to hierarchical trees)
 findIsolateVariable <- function(hierMatrix) {
-  # indice of groups containing other groups
-  indcont <- which(rowSums(hierMatrix) == 1)
-  # indice of groups not included in a group
-  indtop <- which(colSums(hierMatrix) == 1)
+  # indices of groups containing other groups
+  indCont <- which(rowSums(hierMatrix) == 1)
+  # indices of groups not included in a group
+  indTop <- which(colSums(hierMatrix) == 1)
 
-  # indice of groups at the top of a hierarchy
-  indGrTop <- intersect(indtop, indcont)
+  # indices of groups at the top of a hierarchy
+  indGrTop <- intersect(indTop, indCont)
 
   return(indGrTop)
 }
@@ -66,12 +67,12 @@ parent <- function(ind, hierMatrix) {
   return(parent)
 }
 
-# retrun index of the leaves of the tree (and single variables)
+# retuRn indices of the leaves of the tree (and single variables)
 leaves <- function(hierMatrix) {
   return(which(rowSums(hierMatrix[, , drop = FALSE]) == 1))
 }
 
-# compute the depth of a tree : the maximum number of levels from root to leaves
+# compute the depth of a tree: the maximum number of levels from root to leaves
 numberLevels <- function(hierMatrix) {
 
   # leaves of the tree
@@ -100,7 +101,7 @@ outerNode <- function(toSel, hierMatrix) {
 
 # compute matrix describing the hierarchy
 #
-# return the hierarchy matrix : a binary square matrix. Each row and each column represents a different group.
+# return the hierarchy matrix: a binary square matrix. Each row and each column represents a different group.
 # row i col j = TRUE if jth group is included in ith group, FALSE otherwise
 #
 #
@@ -138,12 +139,12 @@ compHierMatTot <- function(hierInfo) {
 
 # This function gives the group to keep for the hierarchical test procedure
 #
-# group: vector containing the index of group selected
-# var: vector containing the index of variables containing in the different selected groups
-# addRoot: if TRUE, add a group containing all the groups
+# @param group vector containing the index of group selected
+# @param var vector containing the index of variables containing in the different selected groups
+# @param addRoot if TRUE, add a group containing all the groups
 # group and var have the same size
 #
-# return the hierarchy matrix, the completed hieraechy matrix and vectors describing groups
+# return the hierarchy matrix, the completed hierarchy matrix and vectors describing groups
 #
 groupHier <- function(group, var, addRoot = FALSE) {
   # unique group selected
@@ -154,14 +155,14 @@ groupHier <- function(group, var, addRoot = FALSE) {
   hierMat <- compHierMat(group, var)
 
 
-  # groupes contenant d'autres groupes
+  # groups containing other groups
   rSumHM <- rowSums(hierMat)
   grContGr <- which(rSumHM != 1)
 
   # is there a root (a group containing all the other group)
   isRoot <- (max(rSumHM) == length(grdif))
 
-  # groupe ne contenant pas d'autres groupes
+  # groups not containing other groups
   grNotCont <- grdif
   if (length(grContGr) != 0) {
     grNotCont <- grdif[-grContGr]
@@ -172,7 +173,7 @@ groupHier <- function(group, var, addRoot = FALSE) {
   grouplm <- group[indToKeep]
   varlm <- var[indToKeep]
 
-  # complementary groups : group to add to have a full hierarchy
+  # complementary groups: group to add to have a full hierarchy
   GRCOMP <- list()
   groupComp <- varComp <- c()
   if (length(grContGr) > 0) {

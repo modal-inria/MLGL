@@ -12,7 +12,7 @@ selFWER(out, alpha = 0.05)
 \item{alpha}{control level for test}
 }
 \value{
-a list containing :
+a list containing:
 \describe{
   \item{toSel}{vector of boolean. TRUE if the group is selected}
   \item{groupId}{Names of groups}

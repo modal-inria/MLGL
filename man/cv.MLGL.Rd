@@ -45,7 +45,7 @@ cv.MLGL(
 \item{...}{Others parameters for \code{\link{cv.gglasso}} function}
 }
 \value{
-a cv.MLGL object containing :
+a cv.MLGL object containing:
 \describe{
 \item{lambda}{values of \code{lambda}.}
 \item{cvm}{the mean cross-validated error.}
@@ -61,8 +61,8 @@ a cv.MLGL object containing :
 V-fold cross validation for \code{\link{MLGL}} function
 }
 \details{
-Hierarhical clustering is performed with all the variables. Then, the partitions from the different
- levels of the hierarchy are used in the differents run of MLGL for cross validation.
+Hierarchical clustering is performed with all the variables. Then, the partitions from the different
+ levels of the hierarchy are used in the different run of MLGL for cross validation.
 }
 \examples{
 set.seed(42)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/hierarchicalFWER.R
 \name{hierarchicalFWER}
 \alias{hierarchicalFWER}
-\title{Hierachical testing with FWER control}
+\title{Hierarchical testing with FWER control}
 \usage{
 hierarchicalFWER(X, y, group, var, test = partialFtest, Shaffer = FALSE)
 }
@@ -13,14 +13,14 @@ hierarchicalFWER(X, y, group, var, test = partialFtest, Shaffer = FALSE)
 
 \item{group}{vector with index of groups. group[i] contains the index of the group of the variable var[i].}
 
-\item{var}{vector whith the variables contained in each group. group[i] contains the index of the group of the variable var[i].}
+\item{var}{vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].}
 
-\item{test}{function for testing the nullity of a group of coefficients in linear regression. 3 parameters : X : design matrix, y response and varToTest : vector of variables to test; return a pvalue}
+\item{test}{function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value}
 
-\item{Shaffer}{boolean, if TRUE, a shaffer correction is performed}
+\item{Shaffer}{boolean, if TRUE, a Shaffer correction is performed}
 }
 \value{
-a list containing :
+a list containing:
 \describe{
   \item{pvalues}{pvalues of the different test (without correction)}
   \item{adjPvalues}{adjusted pvalues}
@@ -33,7 +33,7 @@ Apply hierarchical test for each hierarchy, and test external variables for FWER
 }
 \details{
 Version of the hierarchical testing procedure of Meinshausen for MLGL output. You can use th \link{selFWER} function to select groups
-at a desired level alph
+at a desired level alpha
 }
 \examples{
 set.seed(42)

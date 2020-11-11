@@ -2,15 +2,15 @@
 #
 # Computation of the Shaffer coefficient
 #
-# pvalue correction if all siblings of a group are leaves nodes
+# p-value correction if all siblings of a group are leaves nodes
 #
-# ind : index of the tested group
-# hierMatTot : matrix describing the hierarchy
-# return sh : shaffer coefficient (apply before hierarchical adjustment)
+# @param ind index of the tested group
+# @param hierMatTot matrix describing the hierarchy
+# @return Shaffer coefficient (apply before hierarchical adjustment)
 shafferImprovement <- function(ind, hierMatTot) {
   # size of group in (in number of leaves)
   sizeInd <- sum(hierMatTot[ind, which(rowSums(hierMatTot) == 1)])
-  # hierarchy level of group ind : 1 = top
+  # hierarchy level of group ind: 1 = top
   levelHier <- colSums(hierMatTot)
 
   # ancestor of group ind
@@ -33,33 +33,33 @@ shafferImprovement <- function(ind, hierMatTot) {
 }
 
 #
-# hierarchical ajustment for p-values in the hierarchical testing procedure
+# hierarchical adjustment for p-values in the hierarchical testing procedure
 #
-# pvalue : pvalue of the test
-# gr : index of group in the hierchical matrix
-# hierMat : hierrarchical matrix
-# adjPvalues : all pvalues already computed
-# Shaffer : boolean, if TRUE, a shaffer correction is performed
-hierarchicalAdjustement <- function(pvalue, gr, hierMat, adjPvalues, sizeRoot, sizeGr, Shaffer = FALSE) {
-  # Shaffer adjustement
+# @param pvalue p-value of the test
+# @param gr index of group in the hierarchical matrix
+# @param hierMat hierarchical matrix
+# @param adjPvalues all p-values already computed
+# @param Shaffer boolean, if TRUE, a Shaffer correction is performed
+hierarchicalAdjustment <- function(pvalue, gr, hierMat, adjPvalues, sizeRoot, sizeGr, Shaffer = FALSE) {
+  # Shaffer adjustment
   sh <- ifelse(Shaffer, shafferImprovement(gr, hierMat), 1)
 
-  adjPvalue <- min(pvalue * sizeRoot / sizeGr / sh, 1) # Meinshausen's group size adjustement
-  adjPvalue <- max(c(adjPvalues[which(hierMat[, gr])], adjPvalue), na.rm = TRUE) # Meinshausen's hierarchical adjustement
+  adjPvalue <- min(pvalue * sizeRoot / sizeGr / sh, 1) # Meinshausen's group size adjustment
+  adjPvalue <- max(c(adjPvalues[which(hierMat[, gr])], adjPvalue), na.rm = TRUE) # Meinshausen's hierarchical adjustment
 
   return(adjPvalue)
 }
 
 # hierarchical testing for a completed tree
 #
-# indRoot ; index of the root of the tree in the hierarchy matrix
-# hierMat : matrix describing the hierarchy
-# group : name of groups
-# grouplm : group used in OLS for the test function (leaves of the tree)
-# X : matrix with principal component
-# y : response
-# test : function used for test
-# Shaffer : apply the Shaffer correction ?
+# @param indRoot index of the root of the tree in the hierarchy matrix
+# @param hierMat matrix describing the hierarchy
+# @param group name of groups
+# @param grouplm group used in OLS for the test function (leaves of the tree)
+# @param X matrix with principal component
+# @param y response
+# @param test function used for test
+# @param Shaffer apply the Shaffer correction ?
 #
 #
 hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = partialFtest, Shaffer = FALSE) {
@@ -84,7 +84,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 
   continue <- TRUE
 
-  # Index of the non rejected group to test at the current level
+  # Index of the non rejected groups to test at the current level
   indToTest <- indRoot
 
   # hierarchical testing
@@ -95,13 +95,13 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
     # for each  group of the current level
     for (gr in indToTest)
     {
-      # group included in gr
+      # groups included in gr
       subGroup <- group[setdiff(which(hierMat[gr, ]), gr)]
       if (length(subGroup) == 0) {
         subGroup <- group[gr]
       }
 
-      # only group corresponding to leaves
+      # only groups corresponding to leaves
       subLeaves <- intersect(subGroup, group[grRoot])
       sizeGr <- length(subLeaves)
       toTest0 <- which(grouplm %in% subLeaves)
@@ -109,7 +109,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
       indGrOutObj <- match(group[gr], grInHier)
       pvalues[indGrOutObj] <- test(X, y, toTest0)
       if (length(indGrOutObj) > 1) {
-        adjPvalues[indGrOutObj] <- hierarchicalAdjustement(pvalues[indGrOutObj], indGrOutObj, hierMat[indGrInHier, indGrInHier], adjPvalues, sizeRoot, sizeGr, Shaffer)
+        adjPvalues[indGrOutObj] <- hierarchicalAdjustment(pvalues[indGrOutObj], indGrOutObj, hierMat[indGrInHier, indGrInHier], adjPvalues, sizeRoot, sizeGr, Shaffer)
       }
       else {
         adjPvalues[indGrOutObj] <- pvalues[indGrOutObj]
@@ -181,7 +181,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 #     pvalues[indGrOutObj]    = test(X, y, toTest0)
 #     if(length(indGrOutObj)>1)
 #     {
-#       adjPvalues[indGrOutObj] = hierarchicalAdjustement(pvalues[indGrOutObj], indGrOutObj, hierMat[indGrInHier, indGrInHier], adjPvalues, sizeRoot, sizeGr, Shaffer)
+#       adjPvalues[indGrOutObj] = hierarchicalAdjustment(pvalues[indGrOutObj], indGrOutObj, hierMat[indGrInHier, indGrInHier], adjPvalues, sizeRoot, sizeGr, Shaffer)
 #     }
 #     else
 #     {
@@ -221,7 +221,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 # #       pvalues[indGrOutObj]    = test(X, y, toTest0)
 # #       if(length(indGrOutObj)>1)
 # #       {
-# #         adjPvalues[indGrOutObj] = hierarchicalAdjustement(pvalues[indGrOutObj], indGrOutObj, hierMat[indGrInHier, indGrInHier], adjPvalues, sizeRoot, sizeGr, Shaffer)
+# #         adjPvalues[indGrOutObj] = hierarchicalAdjustment(pvalues[indGrOutObj], indGrOutObj, hierMat[indGrInHier, indGrInHier], adjPvalues, sizeRoot, sizeGr, Shaffer)
 # #       }
 # #       else
 # #       {
@@ -252,16 +252,16 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 #'
 #' Apply hierarchical test for each hierarchy, and test external variables for FWER control at level alpha
 #'
-#' @title Hierachical testing with FWER control
+#' @title Hierarchical testing with FWER control
 #'
 #' @param X original data
 #' @param y associated response
 #' @param group vector with index of groups. group[i] contains the index of the group of the variable var[i].
-#' @param var vector whith the variables contained in each group. group[i] contains the index of the group of the variable var[i].
-#' @param test function for testing the nullity of a group of coefficients in linear regression. 3 parameters : X : design matrix, y response and varToTest : vector of variables to test; return a pvalue
-#' @param Shaffer boolean, if TRUE, a shaffer correction is performed
+#' @param var vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].
+#' @param test function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value
+#' @param Shaffer boolean, if TRUE, a Shaffer correction is performed
 #'
-#' @return a list containing :
+#' @return a list containing:
 #' \describe{
 #'   \item{pvalues}{pvalues of the different test (without correction)}
 #'   \item{adjPvalues}{adjusted pvalues}
@@ -271,7 +271,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 #'
 #' @details
 #' Version of the hierarchical testing procedure of Meinshausen for MLGL output. You can use th \link{selFWER} function to select groups
-#' at a desired level alph
+#' at a desired level alpha
 #'
 #'
 #' @examples
@@ -318,12 +318,12 @@ hierarchicalFWER <- function(X, y, group, var, test = partialFtest, Shaffer = FA
     # index of group contained in the hierarchy
     indGrHierRoot <- which(hierMatTot[indRoot, ])
 
-    # indice of leaves and single variables
+    # indices of leaves and single variables
     indLeaves <- leaves(hierMatTot[indGrHierRoot, indGrHierRoot, drop = FALSE])
 
     # stock results in output
     pvalues[indGrHierRoot] <- out$pvalues
-    adjPvalues[indGrHierRoot] <- pmin(out$adjPvalues * m / length(indLeaves), 1) # adjustement for multiple tree # each tree is penalized by its size
+    adjPvalues[indGrHierRoot] <- pmin(out$adjPvalues * m / length(indLeaves), 1) # adjustment for multiple trees # each tree is penalized by its size
   } # end for root
 
   groupId <- as.numeric(rownames(hierMatTot))
@@ -338,7 +338,7 @@ hierarchicalFWER <- function(X, y, group, var, test = partialFtest, Shaffer = FA
 #' @param out output of \link{hierarchicalFDR} function
 #' @param alpha control level for test
 #'
-#' @return a list containing :
+#' @return a list containing:
 #' \describe{
 #'   \item{toSel}{vector of boolean. TRUE if the group is selected}
 #'   \item{groupId}{Names of groups}
@@ -367,17 +367,17 @@ selFWER <- function(out, alpha = 0.05) {
   # output
   toSel <- rep(FALSE, length(out$adjPvalues))
 
-  # indice of groupes at the top of hierarchy
+  # indices of groups at the top of hierarchy
   family <- findRoot2(out$hierMatrix)
 
   continue <- TRUE
 
   while (continue) {
     continue <- FALSE
-    # select group with adjusted pavalues <= local.alpha
+    # select groups with adjusted p-values <= local.alpha
     toSel[family] <- (out$adjPvalues[family] <= alpha)
 
-    # find children of selected group
+    # find children of selected groups
     if (any(toSel[family])) {
       ind <- which(toSel[family])
       newfamily <- c()
@@ -390,7 +390,7 @@ selFWER <- function(out, alpha = 0.05) {
     }
   } # fin while
 
-  # we select only outer node
+  # we select only outer nodes
   toSel[which(toSel)[which(rowSums(out$hierMatrix[toSel, toSel, drop = FALSE]) > 1)]] <- FALSE
 
 

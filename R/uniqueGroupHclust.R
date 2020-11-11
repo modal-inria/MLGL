@@ -18,7 +18,7 @@ uniqueGroupHclust <- function(hc) {
     stop("hc must be an hclust object.")
   }
 
-  # hc$merge contains the order and composition (2 number) of the different merge
+  # hc$merge contains the order and composition (2 numbers) of the different merges
   nr <- nrow(hc$merge)
   ind <- 1:(nr + 1)
   gr <- 1:(nr + 1)

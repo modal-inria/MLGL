@@ -16,7 +16,7 @@ selFDR(out, alpha = 0.05, global = TRUE, outer = TRUE)
 \item{outer}{if TRUE, the FDR is controlled only on outer node (rejected groups without rejected children) . If FALSE, it is controlled on the full tree.}
 }
 \value{
-a list containing :
+a list containing:
 \describe{
   \item{toSel}{vector of boolean. TRUE if the group is selected}
   \item{groupId}{Names of groups}
@@ -30,9 +30,9 @@ Select groups from hierarchical testing procedure with FDR control (\link{hierar
 \details{
 See the reference for mode details about the method.
 
-If each family is controlled at a level alpha, we have the following control :
-FDR control of full tree : alpha * delta * 2  (delta = 1.44)
-FDR control of outer node : alpha * L * delta * 2 (delta = 1.44)
+If each family is controlled at a level alpha, we have the following control:
+FDR control of full tree: alpha * delta * 2  (delta = 1.44)
+FDR control of outer node: alpha * L * delta * 2 (delta = 1.44)
 }
 \examples{
 set.seed(42)

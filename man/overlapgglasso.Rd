@@ -30,7 +30,7 @@ overlapgglasso(
 
 \item{lambda}{lambda values for group lasso. If not provided, the function generates its own values of lambda}
 
-\item{weight}{a vector the weight for each group. Default is the sqaure root of the size of each group}
+\item{weight}{a vector the weight for each group. Default is the square root of the size of each group}
 
 \item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss (regression) and "logit" logistic loss (classification)}
 
@@ -39,7 +39,7 @@ overlapgglasso(
 \item{...}{Others parameters for \code{\link{gglasso}} function}
 }
 \value{
-a MLGL object containing :
+a MLGL object containing:
 \describe{
   \item{lambda}{lambda values}
   \item{b0}{intercept values for \code{lambda}}
@@ -48,8 +48,8 @@ a MLGL object containing :
   \item{group}{A list containing the values index of selected groups for each values of \code{lambda}}
   \item{nVar}{A vector containing the number of non zero coefficients for each values of \code{lambda}}
   \item{nGroup}{A vector containing the number of non zero groups for each values of \code{lambda}}
-  \item{structure}{A list containing 3 vectors. var : all variables used. group : associated groups.
-  weight : weight associated with the different groups.}
+  \item{structure}{A list containing 3 vectors. var: all variables used. group: associated groups.
+  weight: weight associated with the different groups.}
   \item{time}{computation time}
   \item{dim}{dimension of \code{X}}
 }

@@ -21,10 +21,10 @@ hierarchicalTestingClassical <- function(X, y, hc = NULL, alpha = 0.05, test = p
   # leaves of the tree
   grouplm <- unique(hierInfo$grouplm)
 
-  # matrix describieng the tree
+  # matrix describing the tree
   hierMatTot <- hierInfo$hierTot
 
-  # indice of groups at the top of a hierarchy
+  # indices of groups at the top of a hierarchy
   indGrTop <- findRoot2(hierMatTot)
 
   # hierarchical testing
@@ -61,10 +61,10 @@ hierarchicalFDRTestingClassical <- function(X, y, hc = NULL, alpha = 0.05, test 
   # leaves of the tree
   grouplm <- unique(hierInfo$grouplm)
 
-  # matrix describieng the tree
+  # matrix describing the tree
   hierMatTot <- hierInfo$hierTot
 
-  # indice of groups at the top of a hierarchy
+  # indices of groups at the top of a hierarchy
   indGrTop <- findRoot2(hierMatTot)
 
   # hierarchical testing

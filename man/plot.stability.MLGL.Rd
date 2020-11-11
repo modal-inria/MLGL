@@ -16,7 +16,7 @@
 \item{...}{Other parameters for plot function}
 }
 \value{
-A list containing :
+A list containing:
 \describe{
 \item{var}{Index of selected variables for the given threshold.}
 \item{group}{Index of the associated group.}

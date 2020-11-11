@@ -7,7 +7,7 @@
 computeGroupSizeWeight(hc, sizeMax = NULL)
 }
 \arguments{
-\item{hc}{outup of hclust}
+\item{hc}{output of hclust}
 
 \item{sizeMax}{maximum size of cluster to consider}
 }

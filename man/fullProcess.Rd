@@ -42,7 +42,7 @@ fullProcess.formula(
 
 \item{hc}{output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method. User can also provide the desired method: "single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median".}
 
-\item{fractionSampleMLGL}{a real between 0 and 1 : the fraction of individuals to use in the sample for MLGL (see Details).}
+\item{fractionSampleMLGL}{a real between 0 and 1: the fraction of individuals to use in the sample for MLGL (see Details).}
 
 \item{BHclust}{number of replicates for computing the distance matrix for the hierarchical clustering tree}
 
@@ -55,7 +55,7 @@ fullProcess.formula(
 \item{data}{an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula)}
 }
 \value{
-a list containing :
+a list containing:
 \describe{
   \item{res}{output of \link{MLGL} function}
   \item{lambdaOpt}{lambda values maximizing the number of rejects}
@@ -73,8 +73,8 @@ a list containing :
 Run hierarchical clustering following by a group-lasso on all the different partition and a hierarchical testing procedure. Only for linear regression problem.
 }
 \details{
-Divide the n individuals in two samples. Then the three following steps are done :
-1) Hierarchical CLustering of the variables of X based on the first sample of individuals
+Divide the n individuals in two samples. Then the three following steps are done:
+1) Hierarchical Clustering of the variables of X based on the first sample of individuals
 2) MLGL on the second sample of individuals
 3) Hierarchical testing procedure on the first sample of individuals.
 }

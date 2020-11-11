@@ -1,7 +1,7 @@
 
-#' simulate n samples from a gaussian multivariate law with 0 vector mean and block diagonal variance matrix with diagonal 1 and block of rho.
+#' Simulate n samples from a gaussian multivariate law with 0 vector mean and block diagonal variance matrix with diagonal 1 and block of rho.
 #'
-#' @title Simulate multivariate Gaussian samples with block diagonal varaince matrix
+#' @title Simulate multivariate Gaussian samples with block diagonal variance matrix
 #'
 #' @author Quentin Grimonprez
 #' @param n number of samples to simulate
@@ -9,7 +9,7 @@
 #' @param sizeBlock size of blocks
 #' @param rho correlation within each block
 #'
-#' @return a matrix of size n *(nBlock*sizeBlock) containing the samples
+#' @return a matrix of size n * (nBlock * sizeBlock) containing the samples
 #'
 #' @examples
 #' X <- simuBlockGaussian(50, 12, 5, 0.7)

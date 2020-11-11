@@ -1,9 +1,9 @@
 #
 # compute the principal component of each group and perform a OLS with the principal component as variables
 #
-# X: design matrix
-# y: response
-# group & var: vectors describing the group structure. group[i] contains the number of the group associated to the variable var[i]
+# @param X design matrix
+# @param y response
+# @param group,var vectors describing the group structure. group[i] contains the number of the group associated to the variable var[i]
 #
 # return a list containing 
 # - lm the summary of OLS
@@ -52,8 +52,8 @@ acpOLStest <- function(X, y, group, var) {
 #' alternative hypothesis: it exists an index k in varToTest such that beta[k] != 0
 #'
 #' The test statistic is based on a full and a reduced model.
-#' full : y = X * beta + epsilon
-#' reduced : y = X * beta[-varToTest] + epsilon
+#' full: y = X * beta + epsilon
+#' reduced: y = X * beta[-varToTest] + epsilon
 #'
 #' @seealso \link{Ftest}
 #'
@@ -114,14 +114,14 @@ Ftest <- function(X, y, varToTest) {
 # #' @return a vector of the same length as varToTest containing the p-values of the test.
 # #'
 # #' @details
-# #' logit model : ln(P(y=1|X)/(1-P(y=1|X))) = X * beta + epsilon
+# #' logit model: ln(P(y=1|X)/(1-P(y=1|X))) = X * beta + epsilon
 # #'
-# #' null hypothesis : beta[varToTest] = 0
-# #' alternative hypothesis : it exists an index k in varToTest such that beta[k] != 0
+# #' null hypothesis: beta[varToTest] = 0
+# #' alternative hypothesis: it exists an index k in varToTest such that beta[k] != 0
 # #'
 # #' The test statistic is based on a full and a reduced model.
-# #' full : ln(P(y=1|X)/(1-P(y=1|X))) = X * beta[varToTest]  + epsilon
-# #' reduced : the null model
+# #' full: ln(P(y=1|X)/(1-P(y=1|X))) = X * beta[varToTest]  + epsilon
+# #' reduced: the null model
 # #'
 # #' @seealso \link{partialChisqtest}
 # #'
@@ -147,12 +147,12 @@ Ftest <- function(X, y, varToTest) {
 # #' @details
 # #' ln(P(y=1|X)/(1-P(y=1|X))) = X * beta + epsilon
 # #'
-# #' null hypothesis : beta[varToTest] = 0
-# #' alternative hypothesis : it exists an index k in varToTest such that beta[k] != 0
+# #' null hypothesis: beta[varToTest] = 0
+# #' alternative hypothesis: it exists an index k in varToTest such that beta[k] != 0
 # #'
 # #' The test statistic is based on a full and a reduced model.
-# #' full : ln(P(y=1|X)/(1-P(y=1|X))) = X * beta + epsilon
-# #' reduced : ln(P(y=1|X)/(1-P(y=1|X))) = X * beta[-varToTest] + epsilon
+# #' full: ln(P(y=1|X)/(1-P(y=1|X))) = X * beta + epsilon
+# #' reduced: ln(P(y=1|X)/(1-P(y=1|X))) = X * beta[-varToTest] + epsilon
 # #'
 # #' @seealso \link{partialFtest}
 # #'
@@ -188,8 +188,8 @@ Ftest <- function(X, y, varToTest) {
 # #' @details
 # #' y = X * beta + epsilon
 # #'
-# #' null hypothesis : beta[varToTest] = 0
-# #' alternative hypothesis : it exists an index k in varToTest such that beta[k] != 0
+# #' null hypothesis: beta[varToTest] = 0
+# #' alternative hypothesis: it exists an index k in varToTest such that beta[k] != 0
 # #'
 # #' see the reference for more details.
 # #'

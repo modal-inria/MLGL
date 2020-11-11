@@ -32,7 +32,7 @@ HMT(
 \item{...}{extra parameters fpr \link{selFDR}}
 }
 \value{
-a list containing :
+a list containing:
 \describe{
   \item{lambdaOpt}{lambda values maximizing the number of rejects}
   \item{var}{A vector containing the index of selected variables for the first \code{lambdaOpt} value}

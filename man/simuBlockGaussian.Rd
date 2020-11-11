@@ -2,7 +2,7 @@
 % Please edit documentation in R/simuBlockGaussian.R
 \name{simuBlockGaussian}
 \alias{simuBlockGaussian}
-\title{Simulate multivariate Gaussian samples with block diagonal varaince matrix}
+\title{Simulate multivariate Gaussian samples with block diagonal variance matrix}
 \usage{
 simuBlockGaussian(n, nBlock, sizeBlock, rho)
 }
@@ -16,10 +16,10 @@ simuBlockGaussian(n, nBlock, sizeBlock, rho)
 \item{rho}{correlation within each block}
 }
 \value{
-a matrix of size n *(nBlock*sizeBlock) containing the samples
+a matrix of size n * (nBlock * sizeBlock) containing the samples
 }
 \description{
-simulate n samples from a gaussian multivariate law with 0 vector mean and block diagonal variance matrix with diagonal 1 and block of rho.
+Simulate n samples from a gaussian multivariate law with 0 vector mean and block diagonal variance matrix with diagonal 1 and block of rho.
 }
 \examples{
 X <- simuBlockGaussian(50, 12, 5, 0.7)

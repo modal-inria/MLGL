@@ -16,7 +16,7 @@
 #' @param verbose print some informations
 #' @param ... Others parameters for \code{\link{gglasso}} function
 #'
-#' @return a stability.MLGL object containing :
+#' @return a stability.MLGL object containing:
 #' \describe{
 #' \item{lambda}{sequence of \code{lambda}.}
 #' \item{B}{Number of bootstrap samples.}
@@ -26,11 +26,11 @@
 #' \item{time}{computation time}
 #' }
 #'
-#' @references Meinshausen and Buhlmann (2010). Stability selection. In : Journal of the Royal Statistical Society : Series B (Statistical Methodology) 72.4, p. 417-473.
+#' @references Meinshausen and Buhlmann (2010). Stability selection. Journal of the Royal Statistical Society: Series B (Statistical Methodology) 72.4, p. 417-473.
 #'
 #' @details
-#' Hierarhical clustering is performed with all the variables. Then, the partitions from the different
-#' levels of the hierarchy are used in the differents run of MLGL for estimating the probability of selection of each group.
+#' Hierarchical clustering is performed with all the variables. Then, the partitions from the different
+#' levels of the hierarchy are used in the different runs of MLGL for estimating the probability of selection of each group.
 #'
 #' @examples
 #' \donttest{
@@ -70,7 +70,7 @@ stability.MLGL <- function(X, y, B = 50, fraction = 0.5, hc = NULL, lambda = NUL
   }
 
   ################################ same as MLGL function
-  # define some usefull variables
+  # define some useful variables
   n <- nrow(X)
   p <- ncol(X)
   tcah <- rep(NA, 3)

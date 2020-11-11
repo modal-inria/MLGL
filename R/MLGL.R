@@ -15,7 +15,7 @@
 #' @param verbose print some information
 #' @param ... Others parameters for \code{\link{gglasso}} function
 #'
-#' @return a MLGL object containing :
+#' @return a MLGL object containing:
 #' \describe{
 #'   \item{lambda}{lambda values}
 #'   \item{b0}{intercept values for \code{lambda}}
@@ -24,9 +24,9 @@
 #'   \item{group}{A list containing the values index of selected groups for each values of \code{lambda}}
 #'   \item{nVar}{A vector containing the number of non zero coefficients for each values of \code{lambda}}
 #'   \item{nGroup}{A vector containing the number of non zero groups for each values of \code{lambda}}
-#'   \item{structure}{A list containing 3 vectors. var : all variables used. group : associated groups.
-#'   weight : weight associated with the different groups.
-#'   level : for each group, the corresponding level of the hierarchy where it appears and disappears. 3 indicates the level with a partition of 3 groups.}
+#'   \item{structure}{A list containing 3 vectors. var: all variables used. group: associated groups.
+#'   weight: weight associated with the different groups.
+#'   level: for each group, the corresponding level of the hierarchy where it appears and disappears. 3 indicates the level with a partition of 3 groups.}
 #'   \item{time}{computation time}
 #'   \item{dim}{dimension of \code{X}}
 #'   \item{hc}{Output of hierarchical clustering}
@@ -141,7 +141,7 @@ MLGL <- function(X, y, hc = NULL, lambda = NULL, weightLevel = NULL, weightSizeG
 
 
 #' @param formula an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted.
-#' @param data an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula)
+#' @param data an optional data.frame, list or environment (or object coercible by as.data.frame to a data.frame) containing the variables in the model. If not found in data, the variables are taken from environment (formula)
 #'
 #'
 #' @rdname MLGL
@@ -211,9 +211,9 @@ bootstrapHclust <- function(X, frac = 1, B = 50, method = "ward.D2", nCore = NUL
 
 
 #
-# compute the mimimum weight of each group
+# compute the minimum weight of each group
 #
-# @param hc outup of hclust function
+# @param hc output of hclust function
 #
 levelMinWeight <- function(hc, weightLevel = NULL) {
   p <- length(hc$order)
@@ -241,7 +241,7 @@ levelMinWeight <- function(hc, weightLevel = NULL) {
     ind <- (weightLevel[1:i] != 0)
     ifelse(sum(ind), min(weightLevel[1:i][ind]), 0)
   }) # If there is only 0, we return 0, else we return the min > 0
-  # mininmal weight for groups of 2 and more variables
+  # minimal weight for groups of 2 and more variables
   minLevelWeight[(p + 1):(2 * p - 1)] <- sapply(1:length(lvCluster), FUN = function(i) {
     ind <- (weightLevel[(i + 1):lvCluster[i]] != 0)
     ifelse(sum(ind), min(weightLevel[(i + 1):lvCluster[i]][ind]), 0)
@@ -254,7 +254,7 @@ levelMinWeight <- function(hc, weightLevel = NULL) {
 
 #' Compute the group size weight vector with an authorized maximal size
 #'
-#' @param hc outup of hclust
+#' @param hc output of hclust
 #' @param sizeMax maximum size of cluster to consider
 #'
 #' @return the weight vector
@@ -298,10 +298,10 @@ levelGroupHC <- function(hc) {
 
   # Output matrix
   startend <- matrix(nrow = 2, ncol = 2 * p - 1)
-  # Level where first appeared each group (j = level containg j groups)
+  # Level where first appeared each group (j = level containing j groups)
   startend[1, ] <- c(rep(p, p), (p - 1):1)
 
-  # Find the level where each group diassapear
+  # Find the level where each group disappear
   for (i in 1:nrow(hc$merge))
   {
     for (j in 1:2)
@@ -314,7 +314,7 @@ levelGroupHC <- function(hc) {
       {
         startend[2, p + hc$merge[i, j]] <- p - i + 1
       }
-    } # end for col os hs$merge
+    } # end for col of hs$merge
   } # end for row of hc$merge
 
   # Last group containing all variables
@@ -337,7 +337,7 @@ preliminaryStep <- function(hc, weightLevel = NULL, weightSizeGroup = NULL, size
   # compute the minimal weight of partition
   weightLevelGroup <- levelMinWeight(hc, weightLevel)
 
-  # CORRECTION : If weight is infinite, we change in 0 and it will be ignored
+  # CORRECTION: If weight is infinite, we change in 0 and it will be ignored
   weightLevelGroup[which(is.infinite(weightLevelGroup))] <- 0
 
   # weight for group size

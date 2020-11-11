@@ -142,7 +142,7 @@ lambda.interp <- function(lambda, s) {
   ### s is the new vector at which evaluations are required.
   ### the value is a vector of left and right indices, and a
   #   vector of fractions.
-  ### the new values are interpolated bewteen the two using the
+  ### the new values are interpolated between the two using the
   #   fraction
   ### Note: lambda decreases. you take:
   ### sfrac*left+(1-sfrac*right)

@@ -16,7 +16,7 @@
 #' @param ... Others parameters for \code{\link{cv.gglasso}} function
 #'
 #'
-#' @return a cv.MLGL object containing :
+#' @return a cv.MLGL object containing:
 #' \describe{
 #' \item{lambda}{values of \code{lambda}.}
 #' \item{cvm}{the mean cross-validated error.}
@@ -30,8 +30,8 @@
 #'
 #'
 #' @details
-#' Hierarhical clustering is performed with all the variables. Then, the partitions from the different
-#'  levels of the hierarchy are used in the differents run of MLGL for cross validation.
+#' Hierarchical clustering is performed with all the variables. Then, the partitions from the different
+#'  levels of the hierarchy are used in the different run of MLGL for cross validation.
 #'
 #' @examples
 #' set.seed(42)
@@ -59,7 +59,7 @@ cv.MLGL <- function(X, y, nfolds = 5, lambda = NULL, hc = NULL, weightLevel = NU
   }
 
   ################################ same as MLGL function
-  # define some usefull variables
+  # define some useful variables
   n <- nrow(X)
   p <- ncol(X)
   tcah <- rep(NA, 3)

@@ -57,10 +57,10 @@ MLGL.formula(
 
 \item{formula}{an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted.}
 
-\item{data}{an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula)}
+\item{data}{an optional data.frame, list or environment (or object coercible by as.data.frame to a data.frame) containing the variables in the model. If not found in data, the variables are taken from environment (formula)}
 }
 \value{
-a MLGL object containing :
+a MLGL object containing:
 \describe{
   \item{lambda}{lambda values}
   \item{b0}{intercept values for \code{lambda}}
@@ -69,9 +69,9 @@ a MLGL object containing :
   \item{group}{A list containing the values index of selected groups for each values of \code{lambda}}
   \item{nVar}{A vector containing the number of non zero coefficients for each values of \code{lambda}}
   \item{nGroup}{A vector containing the number of non zero groups for each values of \code{lambda}}
-  \item{structure}{A list containing 3 vectors. var : all variables used. group : associated groups.
-  weight : weight associated with the different groups.
-  level : for each group, the corresponding level of the hierarchy where it appears and disappears. 3 indicates the level with a partition of 3 groups.}
+  \item{structure}{A list containing 3 vectors. var: all variables used. group: associated groups.
+  weight: weight associated with the different groups.
+  level: for each group, the corresponding level of the hierarchy where it appears and disappears. 3 indicates the level with a partition of 3 groups.}
   \item{time}{computation time}
   \item{dim}{dimension of \code{X}}
   \item{hc}{Output of hierarchical clustering}

@@ -11,7 +11,7 @@
 #' @param test test used in the testing procedure. Default is \link{partialFtest}
 #' @param ... extra parameters fpr \link{selFDR}
 #'
-#' @return a list containing :
+#' @return a list containing:
 #' \describe{
 #'   \item{lambdaOpt}{lambda values maximizing the number of rejects}
 #'   \item{var}{A vector containing the index of selected variables for the first \code{lambdaOpt} value}
@@ -58,7 +58,7 @@ HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = part
   REJECT <- TEST <- list()
   nbReject <- rep(0, length(res$lambda))
   prevSelGroup <- selGroup <- c()
-  for (i in 1:length(res$lambda))
+  for (i in seq_along(res$lambda))
   {
     # if no groups are selected we do nothing
     if (length(res$group[[i]]) > 0) {
@@ -95,12 +95,12 @@ HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = part
   time <- c(res$time, hierTestTime)
   names(time) <- c(names(res$time), "test")
 
-  # indice of optimal lambda : the one with the greatest number of reject
+  # indices of optimal lambda: the one with the greatest number of reject
   indLambdaOpt <- which(nbReject == max(nbReject))
 
 
 
-  # group selected for the lambda optimal
+  # groups selected for the lambda optimal
   indGroupSel <- res$group[[indLambdaOpt[1]]] %in% REJECT[[indLambdaOpt[1]]]
   group <- res$group[[indLambdaOpt[1]]][indGroupSel]
   var <- res$var[[indLambdaOpt[1]]][indGroupSel]

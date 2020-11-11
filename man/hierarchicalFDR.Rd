@@ -2,7 +2,7 @@
 % Please edit documentation in R/hierarchicalFDR.R
 \name{hierarchicalFDR}
 \alias{hierarchicalFDR}
-\title{Hierachical testing with FDR control}
+\title{Hierarchical testing with FDR control}
 \usage{
 hierarchicalFDR(X, y, group, var, test = partialFtest)
 }
@@ -13,12 +13,12 @@ hierarchicalFDR(X, y, group, var, test = partialFtest)
 
 \item{group}{vector with index of groups. group[i] contains the index of the group of the variable var[i].}
 
-\item{var}{vector whith the variables contained in each group. group[i] contains the index of the group of the variable var[i].}
+\item{var}{vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].}
 
-\item{test}{function for testing the nullity of a group of coefficients in linear regression. 3 parameters : X : design matrix, y response and varToTest : vector of variables to test; return a pvalue}
+\item{test}{function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value}
 }
 \value{
-a list containing :
+a list containing:
 \describe{
   \item{pvalues}{pvalues of the different test (without correction)}
   \item{adjPvalues}{adjusted pvalues}

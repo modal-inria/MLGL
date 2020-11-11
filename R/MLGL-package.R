@@ -8,20 +8,18 @@
 #' @name MLGL-package
 #' @description
 #' This package presents a method combining Hierarchical Clustering and Group-lasso. Usually, a single partition of the covariates is used in the group-lasso.
-#' Here, we provides several partition from the hierarchical tree.
+#' Here, we provide several partitions from the hierarchical tree.
 #'
 #' A post-treatment method based on statistical test (with FWER and FDR control) for selecting the regularization parameter and the optimal group for this value is provided.
 #' This method can be applied for the classical group-lasso and our method.
 #'
 #'
 #' @details
-#' The function \link{MLGL} performs the hierarchical clustering and the group-lasso. The post-treatment method can be performed with \link{hierarchicalFWER} and \link{selFWER} functions.
+#' The \link{MLGL} function performs the hierarchical clustering and the group-lasso. The post-treatment method can be performed with \link{hierarchicalFWER} and \link{selFWER} functions.
 #' The whole process can be run with the \link{fullProcess} function.
 #'
 #'
 #' @author Quentin Grimonprez
-#'
-#' Maintainer: Quentin Grimonprez  <quentin.grimonprez@@inria.fr>
 #'
 #' @references "MLGL: An R package implementing correlated variable selection by hierarchical clustering and group-Lasso.", Quentin Grimonprez, Samuel Blanck, Alain Celisse, Guillemette Marot (2018). \url{https://hal.inria.fr/hal-01857242}
 #'

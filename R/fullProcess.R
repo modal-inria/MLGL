@@ -9,12 +9,12 @@
 #' @param control either "FDR" or "FWER"
 #' @param alpha control level for testing procedure
 #' @param test test used in the testing procedure. Default is \link{partialFtest}
-#' @param fractionSampleMLGL a real between 0 and 1 : the fraction of individuals to use in the sample for MLGL (see Details).
+#' @param fractionSampleMLGL a real between 0 and 1: the fraction of individuals to use in the sample for MLGL (see Details).
 #' @param BHclust number of replicates for computing the distance matrix for the hierarchical clustering tree
 #' @param nCore number of cores used for distance computation. Use all cores by default.
 #' @param ... Others parameters for MLGL
 #'
-#' @return a list containing :
+#' @return a list containing:
 #' \describe{
 #'   \item{res}{output of \link{MLGL} function}
 #'   \item{lambdaOpt}{lambda values maximizing the number of rejects}
@@ -29,8 +29,8 @@
 #' }
 #'
 #' @details
-#' Divide the n individuals in two samples. Then the three following steps are done :
-#' 1) Hierarchical CLustering of the variables of X based on the first sample of individuals
+#' Divide the n individuals in two samples. Then the three following steps are done:
+#' 1) Hierarchical Clustering of the variables of X based on the first sample of individuals
 #' 2) MLGL on the second sample of individuals
 #' 3) Hierarchical testing procedure on the first sample of individuals.
 #'
@@ -55,7 +55,7 @@ fullProcess <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = p
   ind2 <- sample(n, floor(n * fractionSampleMLGL))
   ind1 <- (1:n)[-ind2]
 
-  ##### part 1 : hierarchical clustering with half of the data
+  ##### part 1: hierarchical clustering with half of the data
   if (is.null(hc) | is.character(hc)) {
     # center variables and sd = 1
     Xb <- scale(X, center = TRUE, scale = FALSE)
@@ -67,11 +67,11 @@ fullProcess <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = p
   }
 
 
-  ##### part 2 : group-lasso
+  ##### part 2: group-lasso
   res <- MLGL(X[ind2, ], y[ind2], hc = hc, loss = loss, ...)
 
 
-  ##### part 3 : testing procedure
+  ##### part 3: testing procedure
   outTest <- HMT(res, X[ind1, ], y[ind1], control, alpha, test)
 
   outObj <- c(list(res = res), outTest)

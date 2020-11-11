@@ -1,9 +1,9 @@
 
 #### intern function
 # method from hierarchical false discovery rate-controlling method
-# fdr control of famlily : q
-# fdr control of full tree : q * delta * 2  (delta < 1.44)
-# fdr control of outer node : q * L * delta * 2 (delta < 1.44)
+# fdr control of family: q
+# fdr control of full tree: q * delta * 2  (delta < 1.44)
+# fdr control of outer node: q * L * delta * 2 (delta < 1.44)
 hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partialFtest) {
   # root of the tree
   indRoot <- findRoot2(hierMat)
@@ -69,15 +69,15 @@ hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partial
 #'
 #' Apply hierarchical test for each hierarchy, and test external variables for FDR control at level alpha
 #'
-#' @title Hierachical testing with FDR control
+#' @title Hierarchical testing with FDR control
 #'
 #' @param X original data
 #' @param y associated response
 #' @param group vector with index of groups. group[i] contains the index of the group of the variable var[i].
-#' @param var vector whith the variables contained in each group. group[i] contains the index of the group of the variable var[i].
-#' @param test function for testing the nullity of a group of coefficients in linear regression. 3 parameters : X : design matrix, y response and varToTest : vector of variables to test; return a pvalue
+#' @param var vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].
+#' @param test function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value
 #'
-#' @return a list containing :
+#' @return a list containing:
 #' \describe{
 #'   \item{pvalues}{pvalues of the different test (without correction)}
 #'   \item{adjPvalues}{adjusted pvalues}
@@ -137,7 +137,7 @@ hierarchicalFDR <- function(X, y, group, var, test = partialFtest) {
 #' @param global if FALSE the provided alpha is the desired level control for each family.
 #' @param outer if TRUE, the FDR is controlled only on outer node (rejected groups without rejected children) . If FALSE, it is controlled on the full tree.
 #'
-#' @return a list containing :
+#' @return a list containing:
 #' \describe{
 #'   \item{toSel}{vector of boolean. TRUE if the group is selected}
 #'   \item{groupId}{Names of groups}
@@ -148,9 +148,9 @@ hierarchicalFDR <- function(X, y, group, var, test = partialFtest) {
 #' @details
 #' See the reference for mode details about the method.
 #'
-#' If each family is controlled at a level alpha, we have the following control :
-#' FDR control of full tree : alpha * delta * 2  (delta = 1.44)
-#' FDR control of outer node : alpha * L * delta * 2 (delta = 1.44)
+#' If each family is controlled at a level alpha, we have the following control:
+#' FDR control of full tree: alpha * delta * 2  (delta = 1.44)
+#' FDR control of outer node: alpha * L * delta * 2 (delta = 1.44)
 #'
 #' @examples
 #' set.seed(42)
@@ -176,21 +176,21 @@ selFDR <- function(out, alpha = 0.05, global = TRUE, outer = TRUE) {
   global.alpha <- ifelse(global, alpha, min(alpha * (delta * 2 * L), 1))
   # if global = 1, then use local = 1
   local.alpha <- ifelse(global.alpha == 1, 1, local.alpha)
-  # if one level, simphe BH adjust
+  # if one level, simple BH adjust
   local.alpha <- ifelse(outer & (L == 1), alpha, local.alpha)
   global.alpha <- ifelse(outer & (L == 1), alpha, global.alpha)
 
   #
   toSel <- rep(FALSE, length(out$adjPvalues))
 
-  # indice of groupes at the top of hierarchy
+  # indices of groups at the top of hierarchy
   family <- findRoot2(out$hierMatrix)
 
   continue <- TRUE
 
   while (continue) {
     continue <- FALSE
-    # select group with adjusted pavalues <= local.alpha
+    # select group with adjusted p-values <= local.alpha
     toSel[family] <- (out$adjPvalues[family] <= local.alpha)
 
     # find children of selected group
@@ -215,7 +215,7 @@ selFDR <- function(out, alpha = 0.05, global = TRUE, outer = TRUE) {
 }
 
 
-## check paraleters of selFWER function
+## check parameters of selFWER function
 .checkselFDR <- function(adjPvalues, hierMatrix, alpha, global, outer) {
   .checkselFWER(adjPvalues, hierMatrix, alpha)
 
