@@ -25,7 +25,7 @@ hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partial
     compteur <- 1
     continue <- FALSE
     # current family at the level
-    for (i in 1:length(familyToTest))
+    for (i in seq_along(familyToTest))
     {
       # test the group of a family
       for (gr in familyToTest[[i]])
@@ -48,7 +48,7 @@ hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partial
       adjPvalues[familyToTest[[i]]] <- p.adjust(pvalues[familyToTest[[i]]], "BH")
 
       # if selected, we look for the children to test
-      for (j in 1:length(familyToTest[[i]]))
+      for (j in seq_along(familyToTest[[i]]))
       {
         child <- children(familyToTest[[i]][j], hierMat)
         if (length(child) > 0) {
@@ -76,6 +76,7 @@ hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partial
 #' @param group vector with index of groups. group[i] contains the index of the group of the variable var[i].
 #' @param var vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].
 #' @param test function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value
+#' @param addRoot If TRUE, add a common root containing all the groups
 #'
 #' @return a list containing:
 #' \describe{
@@ -101,12 +102,12 @@ hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partial
 #' @seealso \link{selFDR}, \link{hierarchicalFWER}
 #'
 #' @export
-hierarchicalFDR <- function(X, y, group, var, test = partialFtest) {
+hierarchicalFDR <- function(X, y, group, var, test = partialFtest, addRoot = FALSE) {
   # check parameters
   .checkhierarchicalFWER(X, y, group, var, test, TRUE)
 
   # hierarchical matrix
-  hierInfo <- groupHier(group, var)
+  hierInfo <- groupHier(group, var, addRoot)
 
   # lm with leaves represented by their first principal component
   reslm <- acpOLStest(X, y, hierInfo$grouplm, hierInfo$varlm)
@@ -197,7 +198,7 @@ selFDR <- function(out, alpha = 0.05, global = TRUE, outer = TRUE) {
     if (any(toSel[family])) {
       ind <- which(toSel[family])
       newfamily <- c()
-      for (i in 1:length(ind)) {
+      for (i in seq_along(ind)) {
         newfamily <- c(newfamily, children(family[ind[i]], out$hierMatrix))
       }
 

@@ -4,7 +4,7 @@
 \alias{hierarchicalFDR}
 \title{Hierarchical testing with FDR control}
 \usage{
-hierarchicalFDR(X, y, group, var, test = partialFtest)
+hierarchicalFDR(X, y, group, var, test = partialFtest, addRoot = FALSE)
 }
 \arguments{
 \item{X}{original data}
@@ -16,6 +16,8 @@ hierarchicalFDR(X, y, group, var, test = partialFtest)
 \item{var}{vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].}
 
 \item{test}{function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value}
+
+\item{addRoot}{If TRUE, add a common root containing all the groups}
 }
 \value{
 a list containing:

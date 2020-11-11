@@ -4,7 +4,15 @@
 \alias{hierarchicalFWER}
 \title{Hierarchical testing with FWER control}
 \usage{
-hierarchicalFWER(X, y, group, var, test = partialFtest, Shaffer = FALSE)
+hierarchicalFWER(
+  X,
+  y,
+  group,
+  var,
+  test = partialFtest,
+  Shaffer = FALSE,
+  addRoot = FALSE
+)
 }
 \arguments{
 \item{X}{original data}
@@ -18,6 +26,8 @@ hierarchicalFWER(X, y, group, var, test = partialFtest, Shaffer = FALSE)
 \item{test}{function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value}
 
 \item{Shaffer}{boolean, if TRUE, a Shaffer correction is performed}
+
+\item{addRoot}{If TRUE, add a common root containing all the groups}
 }
 \value{
 a list containing:

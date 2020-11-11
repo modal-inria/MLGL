@@ -9,7 +9,9 @@
 #' @param control either "FDR" or "FWER"
 #' @param alpha control level for testing procedure
 #' @param test test used in the testing procedure. Default is \link{partialFtest}
-#' @param ... extra parameters fpr \link{selFDR}
+#' @param addRoot If TRUE, add a common root containing all the groups
+#' @param Shaffer If TRUE, a Shaffer correction is performed (only if control = "FWER")
+#' @param ... extra parameters for \link{selFDR}
 #'
 #' @return a list containing:
 #' \describe{
@@ -42,16 +44,18 @@
 #' @seealso \link{hierarchicalFWER} \link{hierarchicalFDR} \link{selFWER} \link{selFDR}
 #'
 #' @export
-HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest, ...) {
+HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest, addRoot = FALSE, Shaffer = FALSE, ...) {
   control <- match.arg(control)
 
   t1 <- proc.time()
   # choose the right function
   hierTestFunction <- hierarchicalFWER
   selFunction <- selFWER
+  extraParams <- list(addRoot = addRoot, Shaffer = Shaffer)
   if (control == "FDR") {
     hierTestFunction <- hierarchicalFDR
     selFunction <- selFDR
+    extraParams <- list(addRoot = addRoot)
   }
 
   # testing procedure for each lambda
@@ -72,8 +76,8 @@ HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = part
       }
       else {
         # hierarchical testing and selection
-        resTest <- hierTestFunction(X, y, res$group[[i]], res$var[[i]], test)
-
+        resTest <- do.call(hierTestFunction, c(list(X, y, res$group[[i]], res$var[[i]], test), extraParams))
+        
         resSel <- selFunction(resTest, alpha, ...)
 
         # keep outerNode (need for FDR outer = FALSE, do not change in other cases)

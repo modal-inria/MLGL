@@ -116,7 +116,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
       }
     } # end for group
 
-    for (j in 1:length(indToTest))
+    for (j in seq_along(indToTest))
     {
       child <- children(indToTest[j], hierMat)
       if (length(child) > 0) {
@@ -229,7 +229,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 # #       }
 # #     }#end for group
 # #
-# #     for(j in 1:length(indToTest))
+# #     for(j in seq_along(indToTest))
 # #     {
 # #       child = children(indToTest[j], hierMat)
 # #       if(length(child) > 0)
@@ -260,6 +260,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 #' @param var vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].
 #' @param test function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value
 #' @param Shaffer boolean, if TRUE, a Shaffer correction is performed
+#' @param addRoot If TRUE, add a common root containing all the groups
 #'
 #' @return a list containing:
 #' \describe{
@@ -285,13 +286,13 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 #' @seealso \link{selFWER}, \link{hierarchicalFDR}
 #'
 #' @export
-hierarchicalFWER <- function(X, y, group, var, test = partialFtest, Shaffer = FALSE) {
+hierarchicalFWER <- function(X, y, group, var, test = partialFtest, Shaffer = FALSE, addRoot = FALSE) {
   # check parameters
   .checkhierarchicalFWER(X, y, group, var, test, Shaffer)
 
 
   # hierarchical matrix
-  hierInfo <- groupHier(group, var)
+  hierInfo <- groupHier(group, var, addRoot)
   grdif <- unique(hierInfo$groupTot)
   grouplm <- unique(hierInfo$grouplm)
   # total number of leaves
@@ -381,7 +382,7 @@ selFWER <- function(out, alpha = 0.05) {
     if (any(toSel[family])) {
       ind <- which(toSel[family])
       newfamily <- c()
-      for (i in 1:length(ind)) {
+      for (i in seq_along(ind)) {
         newfamily <- c(newfamily, children(family[ind[i]], out$hierMatrix))
       }
 

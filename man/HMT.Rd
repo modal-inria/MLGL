@@ -13,6 +13,8 @@ HMT(
   control = c("FWER", "FDR"),
   alpha = 0.05,
   test = partialFtest,
+  addRoot = FALSE,
+  Shaffer = FALSE,
   ...
 )
 }
@@ -29,7 +31,11 @@ HMT(
 
 \item{test}{test used in the testing procedure. Default is \link{partialFtest}}
 
-\item{...}{extra parameters fpr \link{selFDR}}
+\item{addRoot}{If TRUE, add a common root containing all the groups}
+
+\item{Shaffer}{If TRUE, a Shaffer correction is performed (only if control = "FWER")}
+
+\item{...}{extra parameters for \link{selFDR}}
 }
 \value{
 a list containing:
