@@ -15,6 +15,8 @@ fullProcess(
   fractionSampleMLGL = 1/2,
   BHclust = 50,
   nCore = NULL,
+  addRoot = FALSE,
+  Shaffer = FALSE,
   ...
 )
 
@@ -26,6 +28,10 @@ fullProcess.formula(
   test = partialFtest,
   hc = NULL,
   fractionSampleMLGL = 1/2,
+  BHclust = 50,
+  nCore = NULL,
+  addRoot = FALSE,
+  Shaffer = FALSE,
   ...
 )
 }
@@ -47,6 +53,10 @@ fullProcess.formula(
 \item{BHclust}{number of replicates for computing the distance matrix for the hierarchical clustering tree}
 
 \item{nCore}{number of cores used for distance computation. Use all cores by default.}
+
+\item{addRoot}{If TRUE, add a common root containing all the groups}
+
+\item{Shaffer}{If TRUE, a Shaffer correction is performed (only if control = "FWER")}
 
 \item{...}{Others parameters for MLGL}
 

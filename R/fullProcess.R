@@ -12,6 +12,8 @@
 #' @param fractionSampleMLGL a real between 0 and 1: the fraction of individuals to use in the sample for MLGL (see Details).
 #' @param BHclust number of replicates for computing the distance matrix for the hierarchical clustering tree
 #' @param nCore number of cores used for distance computation. Use all cores by default.
+#' @param addRoot If TRUE, add a common root containing all the groups
+#' @param Shaffer If TRUE, a Shaffer correction is performed (only if control = "FWER")
 #' @param ... Others parameters for MLGL
 #'
 #' @return a list containing:
@@ -43,7 +45,9 @@
 #' @seealso \link{MLGL}, \link{hierarchicalFDR}, \link{hierarchicalFWER}, \link{selFDR}, \link{selFWER}
 #'
 #' @export
-fullProcess <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest, hc = NULL, fractionSampleMLGL = 1 / 2, BHclust = 50, nCore = NULL, ...) {
+fullProcess <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest, 
+                        hc = NULL, fractionSampleMLGL = 1 / 2, BHclust = 50, nCore = NULL, 
+                        addRoot = FALSE, Shaffer = FALSE, ...) {
   loss <- "ls"
   # if(loss == "logit" & identical(test, partialFtest))
   #   test = partialChisqtest
@@ -72,7 +76,7 @@ fullProcess <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = p
 
 
   ##### part 3: testing procedure
-  outTest <- HMT(res, X[ind1, ], y[ind1], control, alpha, test)
+  outTest <- HMT(res, X[ind1, ], y[ind1], control, alpha, test, addRoot, Shaffer)
 
   outObj <- c(list(res = res), outTest)
   class(outObj) <- "fullProcess"
@@ -88,7 +92,9 @@ fullProcess <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = p
 #' @rdname fullProcess
 #'
 #' @export
-fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest, hc = NULL, fractionSampleMLGL = 1 / 2, ...) {
+fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha = 0.05, 
+                                test = partialFtest, hc = NULL, fractionSampleMLGL = 1 / 2, 
+                                BHclust = 50, nCore = NULL, addRoot = FALSE, Shaffer = FALSE, ...) {
   cl <- match.call()
   mf <- match.call(expand.dots = FALSE)
   m <- match(c("formula", "data"), names(mf), 0L)
@@ -102,7 +108,7 @@ fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha
   X <- model.matrix(mt, mf)
   X <- as.matrix(X)
 
-  res <- fullProcess(X, y, control, alpha, test, hc, fractionSampleMLGL, ...)
+  res <- fullProcess(X, y, control, alpha, test, hc, fractionSampleMLGL, BHclust, nCore, addRoot, Shaffer, ...)
 
   return(res)
 }
