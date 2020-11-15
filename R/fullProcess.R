@@ -32,7 +32,7 @@
 #'
 #' @details
 #' Divide the n individuals in two samples. Then the three following steps are done:
-#' 1) Hierarchical Clustering of the variables of X based on the first sample of individuals
+#' 1) Bootstrap Hierarchical Clustering of the variables of X
 #' 2) MLGL on the second sample of individuals
 #' 3) Hierarchical testing procedure on the first sample of individuals.
 #'
