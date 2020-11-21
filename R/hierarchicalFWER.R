@@ -336,7 +336,7 @@ hierarchicalFWER <- function(X, y, group, var, test = partialFtest, Shaffer = FA
 #'
 #' @title Selection from hierarchical testing with FWER control
 #'
-#' @param out output of \link{hierarchicalFDR} function
+#' @param out output of \link{hierarchicalFWER} function
 #' @param alpha control level for test
 #'
 #' @return a list containing:

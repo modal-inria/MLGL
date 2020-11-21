@@ -7,7 +7,7 @@
 selFWER(out, alpha = 0.05)
 }
 \arguments{
-\item{out}{output of \link{hierarchicalFDR} function}
+\item{out}{output of \link{hierarchicalFWER} function}
 
 \item{alpha}{control level for test}
 }
