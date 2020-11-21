@@ -44,6 +44,7 @@ a list containing:
   \item{var}{A vector containing the index of selected variables for the first \code{lambdaOpt} value}
   \item{group}{A vector containing the values index of selected groups for the first \code{lambdaOpt} value}
   \item{selectedGroups}{Selected groups for the first \code{lambdaOpt} value}
+  \item{indLambdaOpt}{indices associated with optimal lambdas}
   \item{reject}{Selected groups for all lambda values}
   \item{alpha}{Control level}
   \item{test}{Test used in the testing procedure}

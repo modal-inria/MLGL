@@ -19,6 +19,7 @@
 #'   \item{var}{A vector containing the index of selected variables for the first \code{lambdaOpt} value}
 #'   \item{group}{A vector containing the values index of selected groups for the first \code{lambdaOpt} value}
 #'   \item{selectedGroups}{Selected groups for the first \code{lambdaOpt} value}
+#'   \item{indLambdaOpt}{indices associated with optimal lambdas}
 #'   \item{reject}{Selected groups for all lambda values}
 #'   \item{alpha}{Control level}
 #'   \item{test}{Test used in the testing procedure}
@@ -111,8 +112,9 @@ HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = part
 
 
   out <- list(
-    lambdaOpt = res$lambda[indLambdaOpt], selectedGroups = REJECT[[indLambdaOpt[1]]], lambda = res$lambda, nGroup = res$nGroup, nSelectedGroup = nbReject,
-    group = group, var = var, test = test, alpha = alpha, reject = REJECT, control = control, time = time, hierTest = TEST
+    lambdaOpt = res$lambda[indLambdaOpt], selectedGroups = REJECT[[indLambdaOpt[1]]], indLambdaOpt = indLambdaOpt, lambda = res$lambda, 
+    nGroup = res$nGroup, nSelectedGroup = nbReject, group = group, var = var, test = test, alpha = alpha, reject = REJECT, 
+    control = control, time = time, hierTest = TEST
   )
 
   class(out) <- "HMT"
