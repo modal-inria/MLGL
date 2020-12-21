@@ -1,6 +1,6 @@
 # MLGL
 
-[![Travis build status](https://travis-ci.com/modal-inria/MLGL.svg?branch=master)](https://travis-ci.com/modal-inria/MLGL) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/modal-inria/MLGL?branch=master&svg=true)](https://ci.appveyor.com/project/modal-inria/MLGL)
+[![R-CMD-check](https://github.com/modal-inria/MLGL/workflows/R-CMD-check/badge.svg)](https://github.com/modal-inria/MLGL/actions)
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/MLGL)](https://cran.r-project.org/package=MLGL) [![Total Downloads](http://cranlogs.r-pkg.org/badges/grand-total/MLGL?color=blue)](http://cranlogs.r-pkg.org/badges/grand-total/MLGL) [![Downloads](https://cranlogs.r-pkg.org/badges/MLGL)](https://cran.rstudio.com/web/packages/MLGL/index.html)
 
