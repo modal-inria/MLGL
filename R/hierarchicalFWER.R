@@ -370,7 +370,6 @@ selFWER <- function(out, alpha = 0.05) {
 
   # indices of groups at the top of hierarchy
   family <- findRoot2(out$hierMatrix)
-
   continue <- TRUE
 
   while (continue) {
@@ -379,7 +378,7 @@ selFWER <- function(out, alpha = 0.05) {
     toSel[family] <- (out$adjPvalues[family] <= alpha)
 
     # find children of selected groups
-    if (any(toSel[family])) {
+    if (any(!is.na(toSel[family])) & any(toSel[family])) {
       ind <- which(toSel[family])
       newfamily <- c()
       for (i in seq_along(ind)) {

@@ -195,7 +195,7 @@ selFDR <- function(out, alpha = 0.05, global = TRUE, outer = TRUE) {
     toSel[family] <- (out$adjPvalues[family] <= local.alpha)
 
     # find children of selected group
-    if (any(toSel[family])) {
+    if (any(!is.na(toSel[family])) & any(toSel[family])) {
       ind <- which(toSel[family])
       newfamily <- c()
       for (i in seq_along(ind)) {
