@@ -97,18 +97,18 @@ summary.MLGL <- function(object, ...) {
 #'
 #' @export
 print.fullProcess <- function(x, ...) {
-  cat("Group-lasso\n")
+  cat("- Group-lasso\n")
   cat("$res$lambda\n")
   print(x$res$lambda)
   cat("$res$nVar\n")
   print(x$res$nVar)
   cat("$res$nGroup\n")
   print(x$res$nGroup)
-  cat("Test output\n")
+  cat("\n- Test output\n")
   cat("$lambdaOpt\n")
   print(x$lambdaOpt)
   cat("$selectedGroups\n")
-  cat(x$selectedGroups)
+  print(x$selectedGroups)
 }
 
 #' @title Object Summaries
@@ -135,8 +135,7 @@ print.fullProcess <- function(x, ...) {
 #' @export
 summary.fullProcess <- function(object, ...) {
   summary(object$res)
-  cat("#### Multiple Hierarchical testing\n")
-  cat("## Data \n")
+  cat("## Multiple Hierarchical testing \n")
   cat("alpha:", object$alpha, "\n")
   cat("control:", object$control, "\n")
   cat("optimal lambda:\n")
@@ -184,9 +183,9 @@ print.HMT <- function(x, ...) {
   cat("$nSelectedGroup\n")
   print(x$nSelectedGroup)
   cat("$lambdaOpt\n")
-  cat(x$lambdaOpt)
+  print(x$lambdaOpt)
   cat("$selectedGroups\n")
-  cat(x$selectedGroups)
+  print(x$selectedGroups)
 }
 
 #' @title Object Summaries
