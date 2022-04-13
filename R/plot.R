@@ -180,7 +180,7 @@ plot.stability.MLGL <- function(x, log.lambda = FALSE, threshold = 0.75, ...) {
   selectedGroup <- which(col == 2)
   indsel <- x$group %in% selectedGroup
 
-  return(list(var = x$var[indsel], group = x$group[indsel], threshold = threshold))
+  return(invisible(list(var = x$var[indsel], group = x$group[indsel], threshold = threshold)))
 }
 
 
