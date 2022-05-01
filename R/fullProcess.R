@@ -45,7 +45,13 @@
 #' @seealso \link{MLGL}, \link{hierarchicalFDR}, \link{hierarchicalFWER}, \link{selFDR}, \link{selFWER}
 #'
 #' @export
-fullProcess <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest, 
+fullProcess <- function(X, ...) {
+  UseMethod("fullProcess")
+}
+
+#' @rdname fullProcess
+#' @export
+fullProcess.default <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest, 
                         hc = NULL, fractionSampleMLGL = 1 / 2, BHclust = 50, nCore = NULL, 
                         addRoot = FALSE, Shaffer = FALSE, ...) {
   loss <- "ls"
@@ -103,12 +109,11 @@ fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha
   mf[[1L]] <- quote(stats::model.frame)
   mf <- eval(mf, parent.frame())
   mt <- attr(mf, "terms")
-
   y <- model.response(mf, "numeric")
   X <- model.matrix(mt, mf)
-  X <- as.matrix(X)
+  X <- as.matrix(X[, -1])
 
-  res <- fullProcess(X, y, control, alpha, test, hc, fractionSampleMLGL, BHclust, nCore, addRoot, Shaffer, ...)
+  res <- fullProcess.default(X, y, control, alpha, test, hc, fractionSampleMLGL, BHclust, nCore, addRoot, Shaffer, ...)
 
   return(res)
 }

@@ -2,10 +2,13 @@
 % Please edit documentation in R/fullProcess.R
 \name{fullProcess}
 \alias{fullProcess}
+\alias{fullProcess.default}
 \alias{fullProcess.formula}
 \title{Full process of MLGL}
 \usage{
-fullProcess(
+fullProcess(X, ...)
+
+\method{fullProcess}{default}(
   X,
   y,
   control = c("FWER", "FDR"),
@@ -20,7 +23,7 @@ fullProcess(
   ...
 )
 
-fullProcess.formula(
+\method{fullProcess}{formula}(
   formula,
   data,
   control = c("FWER", "FDR"),
@@ -37,6 +40,8 @@ fullProcess.formula(
 }
 \arguments{
 \item{X}{matrix of size n*p}
+
+\item{...}{Others parameters for MLGL}
 
 \item{y}{vector of size n.}
 
@@ -57,8 +62,6 @@ fullProcess.formula(
 \item{addRoot}{If TRUE, add a common root containing all the groups}
 
 \item{Shaffer}{If TRUE, a Shaffer correction is performed (only if control = "FWER")}
-
-\item{...}{Others parameters for MLGL}
 
 \item{formula}{an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted.}
 
