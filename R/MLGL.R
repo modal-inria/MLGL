@@ -5,12 +5,16 @@
 #' @author Quentin Grimonprez
 #' @param X matrix of size n*p
 #' @param y vector of size n. If loss = "logit", elements of y must be in {-1,1}
-#' @param hc output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with \code{ward.D2} method. User can also provide the desired method: "single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median".
+#' @param hc output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with \code{ward.D2} method. 
+#' User can also provide the desired method: "single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median".
 #' @param lambda lambda values for group lasso. If not provided, the function generates its own values of lambda
-#' @param weightLevel a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. If not provided, use 1/(height between 2 successive levels). Only if \code{hc} is provided
-#' @param weightSizeGroup a vector of size 2*p-1 containing the weight for each group. Default is the square root of the size of each group. Only if \code{hc} is provided
+#' @param weightLevel a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. 
+#' If not provided, use 1/(height between 2 successive levels). Only if \code{hc} is provided
+#' @param weightSizeGroup a vector of size 2*p-1 containing the weight for each group. 
+#' Default is the square root of the size of each group. Only if \code{hc} is provided
 #' @param intercept should an intercept be included in the model ?
-#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares loss (regression) and "logit" logistic loss (classification)
+#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares loss (regression)
+#' and "logit" logistic loss (classification)
 #' @param sizeMaxGroup maximum size of selected groups. If NULL, no restriction
 #' @param verbose print some information
 #' @param ... Others parameters for \code{\link{gglasso}} function
@@ -26,7 +30,8 @@
 #'   \item{nGroup}{A vector containing the number of non zero groups for each values of \code{lambda}}
 #'   \item{structure}{A list containing 3 vectors. var: all variables used. group: associated groups.
 #'   weight: weight associated with the different groups.
-#'   level: for each group, the corresponding level of the hierarchy where it appears and disappears. 3 indicates the level with a partition of 3 groups.}
+#'   level: for each group, the corresponding level of the hierarchy where it appears and disappears. 
+#'   3 indicates the level with a partition of 3 groups.}
 #'   \item{time}{computation time}
 #'   \item{dim}{dimension of \code{X}}
 #'   \item{hc}{Output of hierarchical clustering}
@@ -45,7 +50,14 @@
 #' @seealso \link{cv.MLGL}, \link{stability.MLGL}, \link{listToMatrix}, \link{predict.MLGL}, \link{coef.MLGL}, \link{plot.cv.MLGL}
 #'
 #' @export
-MLGL <- function(X, y, hc = NULL, lambda = NULL, weightLevel = NULL, weightSizeGroup = NULL, intercept = TRUE, loss = c("ls", "logit"), sizeMaxGroup = NULL, verbose = FALSE, ...) {
+MLGL <- function(X, ...) {
+  UseMethod("MLGL")
+}
+
+#' @rdname MLGL
+#' @export
+MLGL.default <- function(X, y, hc = NULL, lambda = NULL, weightLevel = NULL, weightSizeGroup = NULL, intercept = TRUE, 
+                         loss = c("ls", "logit"), sizeMaxGroup = NULL, verbose = FALSE, ...) {
   # check parameters
   loss <- match.arg(loss)
   .checkParameters(X, y, hc, lambda, weightLevel, weightSizeGroup, intercept, verbose, loss, sizeMaxGroup)
@@ -140,12 +152,12 @@ MLGL <- function(X, y, hc = NULL, lambda = NULL, weightLevel = NULL, weightSizeG
 
 
 
-#' @param formula an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted.
-#' @param data an optional data.frame, list or environment (or object coercible by as.data.frame to a data.frame) containing the variables in the model. If not found in data, the variables are taken from environment (formula)
-#'
+#' @param formula an object of class "formula" (or one that can be coerced to that class): a symbolic description of the 
+#' model to be fitted.
+#' @param data an optional data.frame, list or environment (or object coercible by as.data.frame to a data.frame) containing 
+#' the variables in the model. If not found in data, the variables are taken from environment (formula)
 #'
 #' @rdname MLGL
-#'
 #' @export
 MLGL.formula <- function(formula, data, hc = NULL, lambda = NULL, weightLevel = NULL, weightSizeGroup = NULL, intercept = TRUE, loss = c("ls", "logit"), verbose = FALSE, ...) {
   cl <- match.call()
@@ -159,8 +171,8 @@ MLGL.formula <- function(formula, data, hc = NULL, lambda = NULL, weightLevel = 
 
   y <- model.response(mf, "numeric")
   X <- model.matrix(mt, mf)
-  X <- as.matrix(X)
-
+  X <- as.matrix(X[, -1])
+  
   res <- MLGL(X, y, hc, lambda, weightLevel, weightSizeGroup, intercept, loss, verbose, ...)
 
   return(res)
@@ -289,7 +301,8 @@ computeGroupSizeWeight <- function(hc, sizeMax = NULL) {
 # @param hc output of hierarchical clustering
 #
 # @return A matrix with 2 rows, the first row contains the level at which appears each group during the hierarchical clustering
-# the second row contains the last level where the group is present. The p first columns represent single variable, the other the cluster in the order
+# the second row contains the last level where the group is present. The p first columns represent single variable, 
+# the other the cluster in the order
 # they appear in the hierarchical clustering
 #
 levelGroupHC <- function(hc) {
@@ -415,7 +428,8 @@ preliminaryStep <- function(hc, weightLevel = NULL, weightSizeGroup = NULL, size
   if (!is.null(hc)) {
     if (is.character(hc)) {
       if (!(hc %in% c("single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median"))) {
-        stop("In character mode, hc must be \"single\", \"complete\", \"average\", \"mcquitty\", \"ward.D\", \"ward.D2\", \"centroid\" or \"median\".")
+        stop("In character mode, hc must be \"single\", \"complete\", \"average\", \"mcquitty\", \"ward.D\", 
+             \"ward.D2\", \"centroid\" or \"median\".")
       }
 
       if (!is.null(weightLevel)) {

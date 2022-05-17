@@ -2,10 +2,13 @@
 % Please edit documentation in R/MLGL.R
 \name{MLGL}
 \alias{MLGL}
+\alias{MLGL.default}
 \alias{MLGL.formula}
 \title{Multi-Layer Group-Lasso}
 \usage{
-MLGL(
+MLGL(X, ...)
+
+\method{MLGL}{default}(
   X,
   y,
   hc = NULL,
@@ -19,7 +22,7 @@ MLGL(
   ...
 )
 
-MLGL.formula(
+\method{MLGL}{formula}(
   formula,
   data,
   hc = NULL,
@@ -35,29 +38,35 @@ MLGL.formula(
 \arguments{
 \item{X}{matrix of size n*p}
 
+\item{...}{Others parameters for \code{\link{gglasso}} function}
+
 \item{y}{vector of size n. If loss = "logit", elements of y must be in {-1,1}}
 
-\item{hc}{output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with \code{ward.D2} method. User can also provide the desired method: "single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median".}
+\item{hc}{output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with \code{ward.D2} method. 
+User can also provide the desired method: "single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median".}
 
 \item{lambda}{lambda values for group lasso. If not provided, the function generates its own values of lambda}
 
-\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. If not provided, use 1/(height between 2 successive levels). Only if \code{hc} is provided}
+\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. 
+If not provided, use 1/(height between 2 successive levels). Only if \code{hc} is provided}
 
-\item{weightSizeGroup}{a vector of size 2*p-1 containing the weight for each group. Default is the square root of the size of each group. Only if \code{hc} is provided}
+\item{weightSizeGroup}{a vector of size 2*p-1 containing the weight for each group. 
+Default is the square root of the size of each group. Only if \code{hc} is provided}
 
 \item{intercept}{should an intercept be included in the model ?}
 
-\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss (regression) and "logit" logistic loss (classification)}
+\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss (regression)
+and "logit" logistic loss (classification)}
 
 \item{sizeMaxGroup}{maximum size of selected groups. If NULL, no restriction}
 
 \item{verbose}{print some information}
 
-\item{...}{Others parameters for \code{\link{gglasso}} function}
+\item{formula}{an object of class "formula" (or one that can be coerced to that class): a symbolic description of the 
+model to be fitted.}
 
-\item{formula}{an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted.}
-
-\item{data}{an optional data.frame, list or environment (or object coercible by as.data.frame to a data.frame) containing the variables in the model. If not found in data, the variables are taken from environment (formula)}
+\item{data}{an optional data.frame, list or environment (or object coercible by as.data.frame to a data.frame) containing 
+the variables in the model. If not found in data, the variables are taken from environment (formula)}
 }
 \value{
 a MLGL object containing:
@@ -71,7 +80,8 @@ a MLGL object containing:
   \item{nGroup}{A vector containing the number of non zero groups for each values of \code{lambda}}
   \item{structure}{A list containing 3 vectors. var: all variables used. group: associated groups.
   weight: weight associated with the different groups.
-  level: for each group, the corresponding level of the hierarchy where it appears and disappears. 3 indicates the level with a partition of 3 groups.}
+  level: for each group, the corresponding level of the hierarchy where it appears and disappears. 
+  3 indicates the level with a partition of 3 groups.}
   \item{time}{computation time}
   \item{dim}{dimension of \code{X}}
   \item{hc}{Output of hierarchical clustering}
