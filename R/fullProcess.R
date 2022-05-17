@@ -155,7 +155,7 @@ fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha
       }
     } else {
       # check if hc is a hclust object
-      if (class(hc) != "hclust") {
+      if (!inherits(hc, "hclust")) {
         stop("hc must be an hclust object.")
       }
       # check if hc and X are compatible

@@ -426,7 +426,7 @@ preliminaryStep <- function(hc, weightLevel = NULL, weightSizeGroup = NULL, size
       }
     } else {
       # check if hc is a hclust object
-      if (class(hc) != "hclust") {
+      if (!inherits(hc, "hclust")) {
         stop("hc must be an hclust object.")
       }
       # check if hc and X are compatible

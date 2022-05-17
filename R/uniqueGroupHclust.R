@@ -14,7 +14,7 @@
 #' @export
 uniqueGroupHclust <- function(hc) {
   # check if hc is a hclust object
-  if (class(hc) != "hclust") {
+  if (!inherits(hc, "hclust")) {
     stop("hc must be an hclust object.")
   }
 
