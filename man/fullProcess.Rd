@@ -51,7 +51,8 @@ fullProcess(X, ...)
 
 \item{test}{test used in the testing procedure. Default is \link{partialFtest}}
 
-\item{hc}{output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method. User can also provide the desired method: "single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median".}
+\item{hc}{output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method. User 
+can also provide the desired method: "single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median".}
 
 \item{fractionSampleMLGL}{a real between 0 and 1: the fraction of individuals to use in the sample for MLGL (see Details).}
 
@@ -63,9 +64,11 @@ fullProcess(X, ...)
 
 \item{Shaffer}{If TRUE, a Shaffer correction is performed (only if control = "FWER")}
 
-\item{formula}{an object of class "formula" (or one that can be coerced to that class): a symbolic description of the model to be fitted.}
+\item{formula}{an object of class "formula" (or one that can be coerced to that class): a symbolic description of the 
+model to be fitted.}
 
-\item{data}{an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing the variables in the model. If not found in data, the variables are taken from environment(formula)}
+\item{data}{an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing 
+the variables in the model. If not found in data, the variables are taken from environment (formula)}
 }
 \value{
 a list containing:
@@ -83,7 +86,8 @@ a list containing:
 }
 }
 \description{
-Run hierarchical clustering following by a group-lasso on all the different partition and a hierarchical testing procedure. Only for linear regression problem.
+Run hierarchical clustering following by a group-lasso on all the different partition and a hierarchical testing procedure. 
+Only for linear regression problem.
 }
 \details{
 Divide the n individuals in two samples. Then the three following steps are done:

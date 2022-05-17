@@ -19,7 +19,8 @@
 
 \item{s}{Either "lambda.1se" or "lambda.min"}
 
-\item{type}{if "fit", return the fitted values for each values of s, if "coefficients", return the estimated coefficients for each s}
+\item{type}{if "fit", return the fitted values for each values of s, if "coefficients", return the estimated 
+coefficients for each s}
 
 \item{...}{Not used. Other arguments to predict.}
 }

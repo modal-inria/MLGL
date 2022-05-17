@@ -23,7 +23,9 @@ hierarchicalFWER(
 
 \item{var}{vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].}
 
-\item{test}{function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value}
+\item{test}{function for testing the nullity of a group of coefficients in linear regression. 
+The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing 
+the indices of the variables to test. The function returns a p-value}
 
 \item{Shaffer}{boolean, if TRUE, a Shaffer correction is performed}
 
@@ -42,8 +44,8 @@ a list containing:
 Apply hierarchical test for each hierarchy, and test external variables for FWER control at level alpha
 }
 \details{
-Version of the hierarchical testing procedure of Meinshausen for MLGL output. You can use th \link{selFWER} function to select groups
-at a desired level alpha
+Version of the hierarchical testing procedure of Meinshausen for MLGL output. You can use th \link{selFWER} 
+function to select groups at a desired level alpha
 }
 \examples{
 set.seed(42)

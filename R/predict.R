@@ -6,7 +6,8 @@
 #' @param object \code{\link{MLGL}} object
 #' @param newx matrix with new individuals for prediction. If type="coefficients", the parameter has to be NULL
 #' @param s values of lambda. If NULL, use values from object
-#' @param type if "fit", return the fitted values for each values of s, if "coefficients", return the estimated coefficients for each s
+#' @param type if "fit", return the fitted values for each values of s, if "coefficients", return the estimated 
+#' coefficients for each s
 #' @param ... Not used. Other arguments to predict.
 #'
 #' @return A matrix with fitted values or estimated coefficients for given values of s.
@@ -76,7 +77,8 @@ predict.MLGL <- function(object, newx = NULL, s = NULL, type = c("fit", "coeffic
 #' @param object \code{\link{cv.MLGL}} object
 #' @param newx matrix with new individuals for prediction. If type="coefficients", the parameter has to be NULL
 #' @param s Either "lambda.1se" or "lambda.min"
-#' @param type if "fit", return the fitted values for each values of s, if "coefficients", return the estimated coefficients for each s
+#' @param type if "fit", return the fitted values for each values of s, if "coefficients", return the estimated 
+#' coefficients for each s
 #' @param ... Not used. Other arguments to predict.
 #'
 #' @return A matrix with fitted values or estimated coefficients for given values of s.

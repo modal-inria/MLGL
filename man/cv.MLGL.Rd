@@ -30,11 +30,13 @@ cv.MLGL(
 
 \item{hc}{output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method}
 
-\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. If not provided, use 1/(height between 2 successive levels)}
+\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. 
+If not provided, use 1/(height between 2 successive levels)}
 
 \item{weightSizeGroup}{a vector}
 
-\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss (regression) and "logit" logistic loss (classification)}
+\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares 
+loss (regression) and "logit" logistic loss (classification)}
 
 \item{intercept}{should an intercept be included in the model ?}
 

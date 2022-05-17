@@ -1,5 +1,6 @@
 
-#' Simulate n samples from a gaussian multivariate law with 0 vector mean and block diagonal variance matrix with diagonal 1 and block of rho.
+#' Simulate n samples from a gaussian multivariate law with 0 vector mean and block diagonal variance matrix with 
+#' diagonal 1 and block of rho.
 #'
 #' @title Simulate multivariate Gaussian samples with block diagonal variance matrix
 #'

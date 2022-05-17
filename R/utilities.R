@@ -2,11 +2,13 @@
 #' Obtain a sparse matrix of the coefficients of the path
 #'
 #' @param x \code{\link{MLGL}} object
-#' @param row "lambda" or "covariates". If row="covariates", each row of the output matrix represents a covariate else if row="lambda", it represents a value of lambda.
+#' @param row "lambda" or "covariates". If row="covariates", each row of the output matrix represents a covariate else 
+#' if row="lambda", it represents a value of lambda.
 #'
 #' @return a sparse matrix containing the estimated coefficients for different lambdas
 #'
-#' @details This function can be used with a \code{\link{MLGL}} object to obtain a matrix with all estimated coefficients for the p original variables.
+#' @details This function can be used with a \code{\link{MLGL}} object to obtain a matrix with all estimated coefficients 
+#' for the p original variables.
 #' In case of overlapping groups, coefficients from repeated variables are summed.
 #'
 #' @examples

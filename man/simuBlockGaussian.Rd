@@ -19,7 +19,8 @@ simuBlockGaussian(n, nBlock, sizeBlock, rho)
 a matrix of size n * (nBlock * sizeBlock) containing the samples
 }
 \description{
-Simulate n samples from a gaussian multivariate law with 0 vector mean and block diagonal variance matrix with diagonal 1 and block of rho.
+Simulate n samples from a gaussian multivariate law with 0 vector mean and block diagonal variance matrix with 
+diagonal 1 and block of rho.
 }
 \examples{
 X <- simuBlockGaussian(50, 12, 5, 0.7)

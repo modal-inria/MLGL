@@ -32,11 +32,13 @@ stability.MLGL(
 
 \item{lambda}{lambda values for group lasso. If not provided, the function generates its own values of lambda}
 
-\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. If not provided, use 1/(height between 2 successive levels)}
+\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. 
+If not provided, use 1/(height between 2 successive levels)}
 
 \item{weightSizeGroup}{a vector}
 
-\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss (regression) and "logit" logistic loss (classification)}
+\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss 
+(regression) and "logit" logistic loss (classification)}
 
 \item{intercept}{should an intercept be included in the model ?}
 
@@ -77,7 +79,8 @@ res <- stability.MLGL(X, y)
 
 }
 \references{
-Meinshausen and Buhlmann (2010). Stability selection. Journal of the Royal Statistical Society: Series B (Statistical Methodology) 72.4, p. 417-473.
+Meinshausen and Buhlmann (2010). Stability selection. 
+Journal of the Royal Statistical Society: Series B (Statistical Methodology) 72.4, p. 417-473.
 }
 \seealso{
 \link{cv.MLGL}, \link{MLGL}

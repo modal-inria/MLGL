@@ -13,7 +13,8 @@
 
 \item{s}{values of lambda. If NULL, use values from object}
 
-\item{type}{if "fit", return the fitted values for each values of s, if "coefficients", return the estimated coefficients for each s}
+\item{type}{if "fit", return the fitted values for each values of s, if "coefficients", return the estimated 
+coefficients for each s}
 
 \item{...}{Not used. Other arguments to predict.}
 }

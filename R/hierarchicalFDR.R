@@ -75,7 +75,9 @@ hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partial
 #' @param y associated response
 #' @param group vector with index of groups. group[i] contains the index of the group of the variable var[i].
 #' @param var vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].
-#' @param test function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value
+#' @param test function for testing the nullity of a group of coefficients in linear regression. 
+#' The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, 
+#' a vector containing the indices of the variables to test. The function returns a p-value
 #' @param addRoot If TRUE, add a common root containing all the groups
 #'
 #' @return a list containing:
@@ -87,9 +89,8 @@ hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partial
 #'   }
 #'
 #' @details
-#' Version of the hierarchical testing procedure of Yekutieli for MLGL output. You can use th \link{selFDR} function to select groups
-#' at a desired level alpha.
-#'
+#' Version of the hierarchical testing procedure of Yekutieli for MLGL output. You can use th \link{selFDR} function 
+#' to select groups at a desired level alpha.
 #'
 #' @examples
 #' set.seed(42)
@@ -97,7 +98,8 @@ hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partial
 #' y <- X[, c(2, 7, 12)] %*% c(2, 2, -2) + rnorm(50, 0, 0.5)
 #' res <- MLGL(X, y)
 #' test <- hierarchicalFDR(X, y, res$group[[20]], res$var[[20]])
-#' @references Yekutieli, Daniel. "Hierarchical False Discovery Rate-Controlling Methodology." Journal of the American Statistical Association 103.481 (2008): 309-16.
+#' @references Yekutieli, Daniel. "Hierarchical False Discovery Rate-Controlling Methodology." 
+#' Journal of the American Statistical Association 103.481 (2008): 309-16.
 #'
 #' @seealso \link{selFDR}, \link{hierarchicalFWER}
 #'
@@ -136,7 +138,8 @@ hierarchicalFDR <- function(X, y, group, var, test = partialFtest, addRoot = FAL
 #' @param out output of \link{hierarchicalFDR} function
 #' @param alpha control level for test
 #' @param global if FALSE the provided alpha is the desired level control for each family.
-#' @param outer if TRUE, the FDR is controlled only on outer node (rejected groups without rejected children) . If FALSE, it is controlled on the full tree.
+#' @param outer if TRUE, the FDR is controlled only on outer node (rejected groups without rejected children). 
+#' If FALSE, it is controlled on the full tree.
 #'
 #' @return a list containing:
 #' \describe{
@@ -160,7 +163,8 @@ hierarchicalFDR <- function(X, y, group, var, test = partialFtest, addRoot = FAL
 #' res <- MLGL(X, y)
 #' test <- hierarchicalFDR(X, y, res$group[[20]], res$var[[20]])
 #' sel <- selFDR(test, alpha = 0.05)
-#' @references Yekutieli, Daniel. "Hierarchical False Discovery Rate-Controlling Methodology." Journal of the American Statistical Association 103.481 (2008): 309-16.
+#' @references Yekutieli, Daniel. "Hierarchical False Discovery Rate-Controlling Methodology." 
+#' Journal of the American Statistical Association 103.481 (2008): 309-16.
 #'
 #' @seealso \link{hierarchicalFDR}
 #'
@@ -212,7 +216,8 @@ selFDR <- function(out, alpha = 0.05, global = TRUE, outer = TRUE) {
     toSel[which(toSel)[which(rowSums(out$hierMatrix[toSel, toSel, drop = FALSE]) > 1)]] <- FALSE
   }
 
-  return(list(toSel = toSel, groupId = as.numeric(colnames(out$hierMatrix)), local.alpha = local.alpha, global.alpha = global.alpha))
+  return(list(toSel = toSel, groupId = as.numeric(colnames(out$hierMatrix)), local.alpha = local.alpha, 
+              global.alpha = global.alpha))
 }
 
 

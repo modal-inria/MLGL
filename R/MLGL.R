@@ -159,7 +159,8 @@ MLGL.default <- function(X, y, hc = NULL, lambda = NULL, weightLevel = NULL, wei
 #'
 #' @rdname MLGL
 #' @export
-MLGL.formula <- function(formula, data, hc = NULL, lambda = NULL, weightLevel = NULL, weightSizeGroup = NULL, intercept = TRUE, loss = c("ls", "logit"), verbose = FALSE, ...) {
+MLGL.formula <- function(formula, data, hc = NULL, lambda = NULL, weightLevel = NULL, weightSizeGroup = NULL, 
+                         intercept = TRUE, loss = c("ls", "logit"), verbose = FALSE, ...) {
   cl <- match.call()
   mf <- match.call(expand.dots = FALSE)
   m <- match(c("formula", "data"), names(mf), 0L)
@@ -522,7 +523,6 @@ preliminaryStep <- function(hc, weightLevel = NULL, weightSizeGroup = NULL, size
       stop("sizeMaxGroup must be a positive integer.")
     }
   }
-
 
   invisible(return(NULL))
 }

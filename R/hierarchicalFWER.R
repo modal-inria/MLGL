@@ -109,7 +109,8 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
       indGrOutObj <- match(group[gr], grInHier)
       pvalues[indGrOutObj] <- test(X, y, toTest0)
       if (length(indGrOutObj) > 1) {
-        adjPvalues[indGrOutObj] <- hierarchicalAdjustment(pvalues[indGrOutObj], indGrOutObj, hierMat[indGrInHier, indGrInHier], adjPvalues, sizeRoot, sizeGr, Shaffer)
+        adjPvalues[indGrOutObj] <- hierarchicalAdjustment(pvalues[indGrOutObj], indGrOutObj, hierMat[indGrInHier, indGrInHier], 
+                                                          adjPvalues, sizeRoot, sizeGr, Shaffer)
       }
       else {
         adjPvalues[indGrOutObj] <- pvalues[indGrOutObj]
@@ -258,7 +259,9 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 #' @param y associated response
 #' @param group vector with index of groups. group[i] contains the index of the group of the variable var[i].
 #' @param var vector with the variables contained in each group. group[i] contains the index of the group of the variable var[i].
-#' @param test function for testing the nullity of a group of coefficients in linear regression. The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing the indices of the variables to test. The function returns a p-value
+#' @param test function for testing the nullity of a group of coefficients in linear regression. 
+#' The function has 3 arguments: \code{X}, the design matrix, \code{y}, response, and \code{varToTest}, a vector containing 
+#' the indices of the variables to test. The function returns a p-value
 #' @param Shaffer boolean, if TRUE, a Shaffer correction is performed
 #' @param addRoot If TRUE, add a common root containing all the groups
 #'
@@ -271,9 +274,8 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
 #'   }
 #'
 #' @details
-#' Version of the hierarchical testing procedure of Meinshausen for MLGL output. You can use th \link{selFWER} function to select groups
-#' at a desired level alpha
-#'
+#' Version of the hierarchical testing procedure of Meinshausen for MLGL output. You can use th \link{selFWER} 
+#' function to select groups at a desired level alpha
 #'
 #' @examples
 #' set.seed(42)

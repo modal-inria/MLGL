@@ -7,9 +7,11 @@
 #' @param nfolds number of folds
 #' @param lambda lambda values for group lasso. If not provided, the function generates its own values of lambda
 #' @param hc output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method
-#' @param weightLevel a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. If not provided, use 1/(height between 2 successive levels)
+#' @param weightLevel a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. 
+#' If not provided, use 1/(height between 2 successive levels)
 #' @param weightSizeGroup a vector
-#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares loss (regression) and "logit" logistic loss (classification)
+#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares 
+#' loss (regression) and "logit" logistic loss (classification)
 #' @param sizeMaxGroup maximum size of selected groups. If NULL, no restriction
 #' @param intercept should an intercept be included in the model ?
 #' @param verbose print some informations
@@ -44,7 +46,8 @@
 #' @seealso \link{MLGL}, \link{stability.MLGL}, \link{predict.cv.gglasso}, \link{coef.cv.MLGL}, \link{plot.cv.MLGL}
 #'
 #' @export
-cv.MLGL <- function(X, y, nfolds = 5, lambda = NULL, hc = NULL, weightLevel = NULL, weightSizeGroup = NULL, loss = c("ls", "logit"), intercept = TRUE, sizeMaxGroup = NULL, verbose = FALSE, ...) {
+cv.MLGL <- function(X, y, nfolds = 5, lambda = NULL, hc = NULL, weightLevel = NULL, weightSizeGroup = NULL, 
+                    loss = c("ls", "logit"), intercept = TRUE, sizeMaxGroup = NULL, verbose = FALSE, ...) {
 
   # check parameters
   loss <- match.arg(loss)
@@ -103,7 +106,8 @@ cv.MLGL <- function(X, y, nfolds = 5, lambda = NULL, hc = NULL, weightLevel = NU
     cat("Computing group-lasso...")
   }
   t1 <- proc.time()
-  res <- cv.gglasso(Xb, y, prelim$group, pf = prelim$weight, nfolds = nfolds, lambda = lambda, intercept = intercept, loss = loss, ...)
+  res <- cv.gglasso(Xb, y, prelim$group, pf = prelim$weight, nfolds = nfolds, lambda = lambda, 
+                    intercept = intercept, loss = loss, ...)
   t2 <- proc.time()
   tgglasso <- t2 - t1
   if (verbose) {
