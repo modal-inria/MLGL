@@ -2,9 +2,7 @@
 % Please edit documentation in R/print.R
 \name{summary.MLGL}
 \alias{summary.MLGL}
-\title{Object Summaries
-
-Summary of a \code{\link{MLGL}} object}
+\title{Object Summaries}
 \usage{
 \method{summary}{MLGL}(object, ...)
 }
@@ -14,8 +12,6 @@ Summary of a \code{\link{MLGL}} object}
 \item{...}{Not used.}
 }
 \description{
-Object Summaries
-
 Summary of a \code{\link{MLGL}} object
 }
 \examples{

@@ -1,8 +1,8 @@
 Package: MLGL
 Type: Package
 Title: Multi-Layer Group-Lasso
-Version: 0.6.7
-Date: 2022-05-17
+Version: 1.0.0
+Date: 2023-03-15
 Authors@R: c(person("Quentin", "Grimonprez", role = c("aut", "cre"), email = "quentingrim@yahoo.fr"),
              person("Samuel", "Blanck", role = "ctb"),
              person("Alain", "Celisse", role = "ths"),
@@ -10,7 +10,7 @@ Authors@R: c(person("Quentin", "Grimonprez", role = c("aut", "cre"), email = "qu
              person("Yi","Yang", role = "ctb"),
              person("Hui","Zou", role = "ctb"))
 Copyright: Inria
-Description: It implements a new procedure of variable selection in the context of redundancy between explanatory variables, which holds true with high dimensional data (Grimonprez et al. (2018) <https://hal.inria.fr/hal-01857242>).
+Description: It implements a new procedure of variable selection in the context of redundancy between explanatory variables, which holds true with high dimensional data (Grimonprez et al. (2023) <doi:10.18637/jss.v106.i03>).
 BugReports: https://github.com/modal-inria/MLGL/issues
 License: GPL (>=2)
 Imports:
@@ -20,5 +20,5 @@ Imports:
     fastcluster,
     FactoMineR,
     parallelDist
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 Encoding: UTF-8

@@ -2,9 +2,7 @@
 % Please edit documentation in R/print.R
 \name{print.MLGL}
 \alias{print.MLGL}
-\title{Print Values
-
-Print a \code{\link{MLGL}} object}
+\title{Print Values}
 \usage{
 \method{print}{MLGL}(x, ...)
 }
@@ -14,8 +12,6 @@ Print a \code{\link{MLGL}} object}
 \item{...}{Not used.}
 }
 \description{
-Print Values
-
 Print a \code{\link{MLGL}} object
 }
 \examples{

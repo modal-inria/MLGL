@@ -2,9 +2,7 @@
 % Please edit documentation in R/print.R
 \name{print.HMT}
 \alias{print.HMT}
-\title{Print Values
-
-Print a \code{\link{HMT}} object}
+\title{Print Values}
 \usage{
 \method{print}{HMT}(x, ...)
 }
@@ -14,8 +12,6 @@ Print a \code{\link{HMT}} object}
 \item{...}{Not used.}
 }
 \description{
-Print Values
-
 Print a \code{\link{HMT}} object
 }
 \examples{

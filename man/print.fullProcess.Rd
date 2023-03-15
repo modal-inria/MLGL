@@ -2,9 +2,7 @@
 % Please edit documentation in R/print.R
 \name{print.fullProcess}
 \alias{print.fullProcess}
-\title{Print Values
-
-Print a \code{\link{fullProcess}} object}
+\title{Print Values}
 \usage{
 \method{print}{fullProcess}(x, ...)
 }
@@ -14,8 +12,6 @@ Print a \code{\link{fullProcess}} object}
 \item{...}{Not used.}
 }
 \description{
-Print Values
-
 Print a \code{\link{fullProcess}} object
 }
 \examples{

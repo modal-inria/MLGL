@@ -2,9 +2,7 @@
 % Please edit documentation in R/print.R
 \name{summary.fullProcess}
 \alias{summary.fullProcess}
-\title{Object Summaries
-
-Summary of a \code{\link{fullProcess}} object}
+\title{Object Summaries}
 \usage{
 \method{summary}{fullProcess}(object, ...)
 }
@@ -14,8 +12,6 @@ Summary of a \code{\link{fullProcess}} object}
 \item{...}{Not used.}
 }
 \description{
-Object Summaries
-
 Summary of a \code{\link{fullProcess}} object
 }
 \examples{

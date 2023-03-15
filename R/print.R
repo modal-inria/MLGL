@@ -1,7 +1,6 @@
 #' @title Print Values
 #'
-#' Print a \code{\link{MLGL}} object
-#'
+#' @description Print a \code{\link{MLGL}} object
 #'
 #' @param x \code{\link{MLGL}} object
 #' @param ... Not used.
@@ -32,8 +31,7 @@ print.MLGL <- function(x, ...) {
 
 #' @title Object Summaries
 #'
-#' Summary of a \code{\link{MLGL}} object
-#'
+#' @description Summary of a \code{\link{MLGL}} object
 #'
 #' @param object \code{\link{MLGL}} object
 #' @param ... Not used.
@@ -76,8 +74,7 @@ summary.MLGL <- function(object, ...) {
 
 #' @title Print Values
 #'
-#' Print a \code{\link{fullProcess}} object
-#'
+#' @description Print a \code{\link{fullProcess}} object
 #'
 #' @param x \code{\link{fullProcess}} object
 #' @param ... Not used.
@@ -113,8 +110,7 @@ print.fullProcess <- function(x, ...) {
 
 #' @title Object Summaries
 #'
-#' Summary of a \code{\link{fullProcess}} object
-#'
+#' @description Summary of a \code{\link{fullProcess}} object
 #'
 #' @param object \code{\link{fullProcess}} object
 #' @param ... Not used.
@@ -152,8 +148,7 @@ summary.fullProcess <- function(object, ...) {
 
 #' @title Print Values
 #'
-#' Print a \code{\link{HMT}} object
-#'
+#' @description Print a \code{\link{HMT}} object
 #'
 #' @param x \code{\link{HMT}} object
 #' @param ... Not used.
@@ -190,8 +185,7 @@ print.HMT <- function(x, ...) {
 
 #' @title Object Summaries
 #'
-#' Summary of a \code{\link{HMT}} object
-#'
+#' @description Summary of a \code{\link{HMT}} object
 #'
 #' @param object \code{\link{HMT}} object
 #' @param ... Not used.

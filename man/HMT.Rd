@@ -2,9 +2,7 @@
 % Please edit documentation in R/HMT.R
 \name{HMT}
 \alias{HMT}
-\title{Hierarchical Multiple Testing procedure
-
-Apply Hierarchical Multiple Testing procedure on a \code{\link{MLGL}} object}
+\title{Hierarchical Multiple Testing procedure}
 \usage{
 HMT(
   res,
@@ -58,8 +56,6 @@ a list containing:
 }
 }
 \description{
-Hierarchical Multiple Testing procedure
-
 Apply Hierarchical Multiple Testing procedure on a \code{\link{MLGL}} object
 }
 \examples{

@@ -1,7 +1,6 @@
 #' @title Hierarchical Multiple Testing procedure
 #'
-#' Apply Hierarchical Multiple Testing procedure on a \code{\link{MLGL}} object
-#'
+#' @description Apply Hierarchical Multiple Testing procedure on a \code{\link{MLGL}} object
 #'
 #' @param res \code{\link{MLGL}} object
 #' @param X matrix of size n*p

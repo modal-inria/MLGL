@@ -2,9 +2,7 @@
 % Please edit documentation in R/print.R
 \name{summary.HMT}
 \alias{summary.HMT}
-\title{Object Summaries
-
-Summary of a \code{\link{HMT}} object}
+\title{Object Summaries}
 \usage{
 \method{summary}{HMT}(object, ...)
 }
@@ -14,8 +12,6 @@ Summary of a \code{\link{HMT}} object}
 \item{...}{Not used.}
 }
 \description{
-Object Summaries
-
 Summary of a \code{\link{HMT}} object
 }
 \examples{

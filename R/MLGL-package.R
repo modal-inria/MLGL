@@ -24,8 +24,9 @@
 #'
 #' @author Quentin Grimonprez
 #'
-#' @references "MLGL: An R package implementing correlated variable selection by hierarchical clustering and group-Lasso.", 
-#' Quentin Grimonprez, Samuel Blanck, Alain Celisse, Guillemette Marot (2018). \url{https://hal.inria.fr/hal-01857242}
+#' @references   Grimonprez Q, Blanck S, Celisse A, Marot G (2023). "MLGL: An R Package Implementing Correlated Variable 
+#' Selection by Hierarchical Clustering and Group-Lasso." Journal of Statistical Software, 106(3), 1-33. 
+#' doi:10.18637/jss.v106.i03.
 #'
 #' @examples
 #' # Simulate gaussian data with block-diagonal variance matrix containing 12 blocks of size 5

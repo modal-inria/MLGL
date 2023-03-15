@@ -27,8 +27,9 @@ y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 res <- MLGL(X, y)
 }
 \references{
-"MLGL: An R package implementing correlated variable selection by hierarchical clustering and group-Lasso.", 
-Quentin Grimonprez, Samuel Blanck, Alain Celisse, Guillemette Marot (2018). \url{https://hal.inria.fr/hal-01857242}
+Grimonprez Q, Blanck S, Celisse A, Marot G (2023). "MLGL: An R Package Implementing Correlated Variable 
+Selection by Hierarchical Clustering and Group-Lasso." Journal of Statistical Software, 106(3), 1-33. 
+doi:10.18637/jss.v106.i03.
 }
 \seealso{
 \link{MLGL}, \link{cv.MLGL}, \link{fullProcess}, \link{hierarchicalFWER}
