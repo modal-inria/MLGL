@@ -152,10 +152,10 @@ plot.stability.MLGL <- function(x, log.lambda = FALSE, threshold = 0.75, ...) {
     stop("log must be a boolean.")
   }
   # threshold
-  if (!is.numeric(threshold) | (length(threshold) != 1)) {
+  if (!is.numeric(threshold) || (length(threshold) != 1)) {
     stop("threshold must be a positive real lesser than 1.")
   }
-  if ((threshold < 0) | (threshold > 1)) {
+  if ((threshold < 0) || (threshold > 1)) {
     stop("threshold must be a positive real lesser than 1.")
   }
 

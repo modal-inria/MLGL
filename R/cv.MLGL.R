@@ -53,17 +53,15 @@ cv.MLGL <- function(X, y, nfolds = 5, lambda = NULL, hc = NULL, weightLevel = NU
   .checkParameters(X, y, hc, lambda, weightLevel, weightSizeGroup, intercept, verbose, loss, sizeMaxGroup)
 
   # nfolds
-  if (!is.numeric(nfolds) | (length(nfolds) != 1)) {
+  if (!is.numeric(nfolds) || (length(nfolds) != 1)) {
     stop("nfolds must be an integer greater than 3.")
   }
-  if (!.is.wholenumber(nfolds) | nfolds <= 2 | nfolds > nrow(X)) { # restriction >=3 comes from cv.gglasso function
+  if (!.is.wholenumber(nfolds) || (nfolds <= 2) || (nfolds > nrow(X))) { # restriction >=3 comes from cv.gglasso function
     stop("nfolds must be an integer greater than 3.")
   }
 
   ################################ same as MLGL function
   # define some useful variables
-  n <- nrow(X)
-  p <- ncol(X)
   tcah <- rep(NA, 3)
 
   # if no hc output provided, we make one

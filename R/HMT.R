@@ -64,8 +64,7 @@ HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = part
   REJECT <- TEST <- list()
   nbReject <- rep(0, length(res$lambda))
   prevSelGroup <- selGroup <- c()
-  for (i in seq_along(res$lambda))
-  {
+  for (i in seq_along(res$lambda)) {
     # if no groups are selected we do nothing
     if (length(res$group[[i]]) > 0) {
       selGroup <- unique(res$group[[i]])

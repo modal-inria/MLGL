@@ -68,7 +68,7 @@ fullProcess.default <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, 
   ind1 <- (1:n)[-ind2]
 
   ##### part 1: hierarchical clustering with half of the data
-  if (is.null(hc) | is.character(hc)) {
+  if (is.null(hc) || is.character(hc)) {
     # center variables and sd = 1
     Xb <- scale(X, center = TRUE, scale = FALSE)
     Xb <- scale(Xb, center = FALSE, scale = sqrt(colSums(Xb^2) / n))
@@ -105,7 +105,6 @@ fullProcess.default <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, 
 fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha = 0.05,
                                 test = partialFtest, hc = NULL, fractionSampleMLGL = 1 / 2,
                                 BHclust = 50, nCore = NULL, addRoot = FALSE, Shaffer = FALSE, ...) {
-  cl <- match.call()
   mf <- match.call(expand.dots = FALSE)
   m <- match(c("formula", "data"), names(mf), 0L)
   mf <- mf[c(1L, m)]
@@ -142,7 +141,7 @@ fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha
   if (any(is.na(y))) {
     stop("Missing values in y not allowed.")
   }
-  if (loss == "logit" && any(y %in% c(-1, 1) == FALSE)) {
+  if ((loss == "logit") && any(y %in% c(-1, 1) == FALSE)) {
     stop("Classification method requires the response y to be in {-1,1}")
   }
 

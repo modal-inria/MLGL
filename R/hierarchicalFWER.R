@@ -24,7 +24,7 @@ shafferImprovement <- function(ind, hierMatTot) {
 
   sh <- 1
   # We can't apply the Shaffer correction if all siblings have not any descendants
-  if ((nSiblingdiff == 0) & (nSibling > 0)) {
+  if ((nSiblingdiff == 0) && (nSibling > 0)) {
     sh <- (sizeInd + nSibling) / (sizeInd + nSibling - 1)
   }
 
@@ -65,7 +65,6 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
   # all Leaves in the hierarchical matrix
   a <- (rowSums(hierMat) == 1)
   allLeaves <- which(a)
-  indcont <- which(!a)
 
   # all group included in the root indRoot
   indGrInHier <- which(hierMat[indRoot, ])
@@ -92,8 +91,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
     indToTestTemp <- c()
 
     # for each  group of the current level
-    for (gr in indToTest)
-    {
+    for (gr in indToTest) {
       # groups included in gr
       subGroup <- group[setdiff(which(hierMat[gr, ]), gr)]
       if (length(subGroup) == 0) {
@@ -117,8 +115,7 @@ hierarchicalTesting <- function(indRoot, hierMat, group, grouplm, X, y, test = p
       }
     } # end for group
 
-    for (j in seq_along(indToTest))
-    {
+    for (j in seq_along(indToTest)) {
       child <- children(indToTest[j], hierMat)
       if (length(child) > 0) {
         indToTestTemp <- c(indToTestTemp, child)
@@ -313,8 +310,7 @@ hierarchicalFWER <- function(X, y, group, var, test = partialFtest, Shaffer = FA
   adjPvalues <- rep(NA, length(grdif))
 
   ## Hierarchical test on the different trees
-  for (indRoot in indGrTop)
-  {
+  for (indRoot in indGrTop) {
     # hierarchical testing on the tree of indRoot
     out <- hierarchicalTesting(indRoot, hierMatTot, grdif, grouplm, reslm$newdata, reslm$y, test, Shaffer)
 
@@ -326,7 +322,8 @@ hierarchicalFWER <- function(X, y, group, var, test = partialFtest, Shaffer = FA
 
     # stock results in output
     pvalues[indGrHierRoot] <- out$pvalues
-    adjPvalues[indGrHierRoot] <- pmin(out$adjPvalues * m / length(indLeaves), 1) # adjustment for multiple trees # each tree is penalized by its size
+    # adjustment for multiple trees # each tree is penalized by its size
+    adjPvalues[indGrHierRoot] <- pmin(out$adjPvalues * m / length(indLeaves), 1)
   } # end for root
 
   groupId <- as.numeric(rownames(hierMatTot))
@@ -380,7 +377,7 @@ selFWER <- function(out, alpha = 0.05) {
     toSel[family] <- (out$adjPvalues[family] <= alpha)
 
     # find children of selected groups
-    if (any(!is.na(toSel[family])) & any(toSel[family])) {
+    if (any(!is.na(toSel[family])) && any(toSel[family])) {
       ind <- which(toSel[family])
       newfamily <- c()
       for (i in seq_along(ind)) {

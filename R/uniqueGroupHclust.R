@@ -24,8 +24,7 @@ uniqueGroupHclust <- function(hc) {
   gr <- 1:(nr + 1)
 
   # for each merge (=level of hierarchical clustering)
-  for (i in 1:nr)
-  {
+  for (i in 1:nr) {
     # positive number = number of the line of the cluster merged
     # negative number = single variable
 

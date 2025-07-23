@@ -37,8 +37,7 @@ listToMatrix <- function(x, row = c("covariates", "lambda")) {
     return(bet)
   } else {
     bet <- Matrix(0, nrow = length(x$lambda), ncol = x$dim[2])
-    for (i in seq_along(x$lambda))
-    {
+    for (i in seq_along(x$lambda)) {
       dup <- duplicated(x$var[[i]])
       bet[i, x$var[[i]][!dup]] <- bet[i, x$var[[i]][!dup]] + x$beta[[i]][!dup]
       bet[i, x$var[[i]][dup]] <- bet[i, x$var[[i]][dup]] + x$beta[[i]][dup]

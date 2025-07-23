@@ -41,8 +41,7 @@ children <- function(ind, hierMatrix) {
   children <- descendant
   if (length(descendant) > 1) {
     # we delete descendant of descendant
-    for (i in descendant)
-    {
+    for (i in descendant) {
       children <- setdiff(children, setdiff(which(hierMatrix[i, ]), i))
     }
   }
@@ -58,8 +57,7 @@ parent <- function(ind, hierMatrix) {
   parent <- ancestor
   if (length(ancestor) > 1) {
     # we delete ancestor of ancestor
-    for (i in ancestor)
-    {
+    for (i in ancestor) {
       parent <- setdiff(parent, setdiff(which(hierMatrix[, i]), i))
     }
   }
@@ -79,8 +77,7 @@ numberLevels <- function(hierMatrix) {
 
   L <- rep(0, length(allLeaves))
 
-  for (i in seq_along(L))
-  {
+  for (i in seq_along(L)) {
     ok <- TRUE
     ind <- allLeaves[i]
     while (ok) {
@@ -110,8 +107,7 @@ compHierMat <- function(group, var) {
   j <- 1
 
   grdif <- sort(grdif)
-  for (indgr in grdif)
-  {
+  for (indgr in grdif) {
     indg <- which(group == indgr)
     hierMat[j, ] <- tapply(var, group, FUN = function(x) {
       all(x %in% var[indg])
@@ -176,8 +172,7 @@ groupHier <- function(group, var, addRoot = FALSE) {
   GRCOMP <- list()
   groupComp <- varComp <- c()
   if (length(grContGr) > 0) {
-    for (i in grContGr)
-    {
+    for (i in grContGr) {
       grIncGrI <- setdiff(which(hierMat[i, ]), i)
       indGrIncGrI <- which(group %in% grdif[grIncGrI])
       indGrI <- which(group %in% grdif[i])

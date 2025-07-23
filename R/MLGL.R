@@ -64,13 +64,11 @@ MLGL.default <- function(X, y, hc = NULL, lambda = NULL, weightLevel = NULL, wei
   .checkParameters(X, y, hc, lambda, weightLevel, weightSizeGroup, intercept, verbose, loss, sizeMaxGroup)
 
   # define some useful variables
-  n <- nrow(X)
-  p <- ncol(X)
   tcah <- NA
 
   ######## hierarchical clustering
   # if hc output not provided, we perform one
-  if (is.null(hc) | is.character(hc)) {
+  if (is.null(hc) || is.character(hc)) {
     if (verbose) {
       cat("Computing hierarchical clustering...")
     }
@@ -162,7 +160,6 @@ MLGL.default <- function(X, y, hc = NULL, lambda = NULL, weightLevel = NULL, wei
 #' @export
 MLGL.formula <- function(formula, data, hc = NULL, lambda = NULL, weightLevel = NULL, weightSizeGroup = NULL,
                          intercept = TRUE, loss = c("ls", "logit"), verbose = FALSE, ...) {
-  cl <- match.call()
   mf <- match.call(expand.dots = FALSE)
   m <- match(c("formula", "data"), names(mf), 0L)
   mf <- mf[c(1L, m)]
@@ -199,15 +196,14 @@ bootstrapHclust <- function(X, frac = 1, B = 50, method = "ward.D2", nCore = NUL
   t1 <- proc.time()
   n <- nrow(X)
 
-  if (frac <= 0 | frac > 1) {
+  if ((frac <= 0) || (frac > 1)) {
     stop("frac must be between 0 and 1.")
   }
 
 
   nInd <- floor(n * frac)
   d <- 0
-  for (i in 1:B)
-  {
+  for (i in 1:B) {
     ind <- sample(n, nInd, replace = TRUE)
     d <- d + parDist(t(X[ind, ]), threads = nCore)
   }
@@ -216,7 +212,6 @@ bootstrapHclust <- function(X, frac = 1, B = 50, method = "ward.D2", nCore = NUL
 
   hc <- fastcluster::hclust(d, method = ifelse(is.character(method), method, "ward.D2"))
   t2 <- proc.time()
-  tcah <- t2 - t1
 
   hc$tcah <- as.numeric((t2 - t1)[3])
 
@@ -256,7 +251,7 @@ levelMinWeight <- function(hc, weightLevel = NULL) {
     ifelse(sum(ind), min(weightLevel[1:i][ind]), 0)
   }) # If there is only 0, we return 0, else we return the min > 0
   # minimal weight for groups of 2 and more variables
-  minLevelWeight[(p + 1):(2 * p - 1)] <- sapply(1:length(lvCluster), FUN = function(i) {
+  minLevelWeight[(p + 1):(2 * p - 1)] <- sapply(seq_along(lvCluster), FUN = function(i) {
     ind <- (weightLevel[(i + 1):lvCluster[i]] != 0)
     ifelse(sum(ind), min(weightLevel[(i + 1):lvCluster[i]][ind]), 0)
   })
@@ -317,15 +312,12 @@ levelGroupHC <- function(hc) {
   startend[1, ] <- c(rep(p, p), (p - 1):1)
 
   # Find the level where each group disappear
-  for (i in 1:nrow(hc$merge))
-  {
-    for (j in 1:2)
-    {
+  for (i in seq_len(nrow(hc$merge))) {
+    for (j in 1:2) {
       # a negative number indicates a single variable
       if (hc$merge[i, j] < 0) {
         startend[2, abs(hc$merge[i, j])] <- p - i + 1
-      } else # a positive number indicates a cluster of 2 or more variables
-      {
+      } else { # a positive number indicates a cluster of 2 or more variables
         startend[2, p + hc$merge[i, j]] <- p - i + 1
       }
     } # end for col of hs$merge
@@ -372,7 +364,6 @@ preliminaryStep <- function(hc, weightLevel = NULL, weightSizeGroup = NULL, size
   weightb <- weightb[-ignoredGroup] # we delete zeros weight
 
   # level of hc associated to groups
-  p <- length(hc$order)
   lv <- levelGroupHC(hc)
   lv <- lv[, -ignoredGroup]
 
@@ -416,7 +407,7 @@ preliminaryStep <- function(hc, weightLevel = NULL, weightSizeGroup = NULL, size
   if (any(is.na(y))) {
     stop("Missing values in y not allowed.")
   }
-  if (loss == "logit" && any(y %in% c(-1, 1) == FALSE)) {
+  if ((loss == "logit") && any(y %in% c(-1, 1) == FALSE)) {
     stop("Classification method requires the response y to be in {-1,1}")
   }
 

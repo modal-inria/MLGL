@@ -31,31 +31,31 @@ simuBlockGaussian <- function(n, nBlock, sizeBlock, rho) {
 # check parameters from simuBlockGaussian function
 .checkSimu <- function(n, nBlock, sizeBlock, rho) {
   # number of samples
-  if (!is.numeric(n) | (length(n) != 1)) {
+  if (!is.numeric(n) || (length(n) != 1)) {
     stop("n must be a strictly positive integer.")
   }
-  if (!.is.wholenumber(n) | n <= 0) {
+  if (!.is.wholenumber(n) || n <= 0) {
     stop("n must be a strictly positive integer.")
   }
 
   # nBlock
-  if (!is.numeric(nBlock) | (length(nBlock) != 1)) {
+  if (!is.numeric(nBlock) || (length(nBlock) != 1)) {
     stop("nBlock must be a strictly positive integer.")
   }
-  if (!.is.wholenumber(nBlock) | nBlock <= 0) {
+  if (!.is.wholenumber(nBlock) || (nBlock <= 0)) {
     stop("nBlock must be a strictly positive integer.")
   }
 
   # sizeBlock
-  if (!is.numeric(sizeBlock) | (length(sizeBlock) != 1)) {
+  if (!is.numeric(sizeBlock) || (length(sizeBlock) != 1)) {
     stop("sizeBlock must be a strictly positive integer.")
   }
-  if (!.is.wholenumber(sizeBlock) | sizeBlock <= 0) {
+  if (!.is.wholenumber(sizeBlock) || (sizeBlock <= 0)) {
     stop("sizeBlock must be a strictly positive integer.")
   }
 
   # rho
-  if (!is.numeric(rho) | (length(rho) != 1)) {
+  if (!is.numeric(rho) || (length(rho) != 1)) {
     stop("rho must be a real between -1 and 1.")
   }
   if (abs(rho) > 1) {

@@ -24,11 +24,9 @@ hierarchicalFDRTesting <- function(hierMat, group, grouplm, X, y, test = partial
     compteur <- 1
     continue <- FALSE
     # current family at the level
-    for (i in seq_along(familyToTest))
-    {
+    for (i in seq_along(familyToTest)) {
       # test the group of a family
-      for (gr in familyToTest[[i]])
-      {
+      for (gr in familyToTest[[i]]) {
         # group included in gr
         subGroup <- setdiff(which(hierMat[gr, ]), gr)
 
@@ -201,7 +199,7 @@ selFDR <- function(out, alpha = 0.05, global = TRUE, outer = TRUE) {
     toSel[family] <- (out$adjPvalues[family] <= local.alpha)
 
     # find children of selected group
-    if (any(!is.na(toSel[family])) & any(toSel[family])) {
+    if (any(!is.na(toSel[family])) && any(toSel[family])) {
       ind <- which(toSel[family])
       newfamily <- c()
       for (i in seq_along(ind)) {

@@ -135,16 +135,13 @@ stability.MLGL <- function(X, y, B = 50, fraction = 0.5, hc = NULL, lambda = NUL
     # sample of size n/2
     testind <- sample(1:n, floor(n * fraction))
 
-    t2 <- proc.time()
     res <- gglasso(Xb[testind, ], y[testind], prelim$group,
       lambda = lambda, pf = prelim$weight,
       intercept = intercept, loss = loss, ...
     )
-    t3 <- proc.time()
 
     # record selected groups
-    for (iLambda in seq_along(lambda))
-    {
+    for (iLambda in seq_along(lambda)) {
       non0 <- which(res$beta[, iLambda] != 0) # non 0 coefficients
       non0gr <- unique(prelim$group[non0]) # associated non 0 groups
       proba[iLambda, non0gr] <- proba[iLambda, non0gr] + 1 # increment counter of selected groups

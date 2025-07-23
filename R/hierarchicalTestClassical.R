@@ -63,9 +63,6 @@ hierarchicalFDRTestingClassical <- function(X, y, hc = NULL, alpha = 0.05, test 
   # matrix describing the tree
   hierMatTot <- hierInfo$hierTot
 
-  # indices of groups at the top of a hierarchy
-  indGrTop <- findRoot2(hierMatTot)
-
   # hierarchical testing
   out <- hierarchicalFDRTesting(hierMatTot, grdif, grouplm, X, y, test = test)
   out$hierMatrix <- hierMatTot
