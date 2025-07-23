@@ -22,7 +22,7 @@ cv.MLGL(
 \arguments{
 \item{X}{matrix of size n*p}
 
-\item{y}{vector of size n. If loss = "logit", elements of y must be in {-1,1}}
+\item{y}{vector of size n. If loss = "logit", elements of y must be in \{-1,1\}}
 
 \item{nfolds}{number of folds}
 
@@ -30,21 +30,21 @@ cv.MLGL(
 
 \item{hc}{output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method}
 
-\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. 
+\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored.
 If not provided, use 1/(height between 2 successive levels)}
 
 \item{weightSizeGroup}{a vector}
 
-\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares 
+\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares
 loss (regression) and "logit" logistic loss (classification)}
 
 \item{intercept}{should an intercept be included in the model ?}
 
 \item{sizeMaxGroup}{maximum size of selected groups. If NULL, no restriction}
 
-\item{verbose}{print some informations}
+\item{verbose}{print some information}
 
-\item{...}{Others parameters for \code{\link{cv.gglasso}} function}
+\item{...}{Others parameters for \code{\link[gglasso]{cv.gglasso}} function}
 }
 \value{
 a cv.MLGL object containing:
@@ -76,7 +76,7 @@ y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 res <- cv.MLGL(X, y)
 }
 \seealso{
-\link{MLGL}, \link{stability.MLGL}, \link{predict.cv.gglasso}, \link{coef.cv.MLGL}, \link{plot.cv.MLGL}
+\link{MLGL}, \link{stability.MLGL}, \link[gglasso]{predict.cv.gglasso}, \link{coef.cv.MLGL}, \link{plot.cv.MLGL}
 }
 \author{
 Quentin Grimonprez

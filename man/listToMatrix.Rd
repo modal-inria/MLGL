@@ -9,7 +9,7 @@ listToMatrix(x, row = c("covariates", "lambda"))
 \arguments{
 \item{x}{\code{\link{MLGL}} object}
 
-\item{row}{"lambda" or "covariates". If row="covariates", each row of the output matrix represents a covariate else 
+\item{row}{"lambda" or "covariates". If row="covariates", each row of the output matrix represents a covariate else
 if row="lambda", it represents a value of lambda.}
 }
 \value{
@@ -19,7 +19,7 @@ a sparse matrix containing the estimated coefficients for different lambdas
 Obtain a sparse matrix of the coefficients of the path
 }
 \details{
-This function can be used with a \code{\link{MLGL}} object to obtain a matrix with all estimated coefficients 
+This function can be used with a \code{\link{MLGL}} object to obtain a matrix with all estimated coefficients
 for the p original variables.
 In case of overlapping groups, coefficients from repeated variables are summed.
 }

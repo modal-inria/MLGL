@@ -22,29 +22,30 @@ stability.MLGL(
 \arguments{
 \item{X}{matrix of size n*p}
 
-\item{y}{vector of size n. If loss = "logit", elements of y must be in {-1,1}}
+\item{y}{vector of size n. If loss = "logit", elements of y must be in \{-1,1\}}
 
 \item{B}{number of bootstrap sample}
 
 \item{fraction}{Fraction of data used at each of the \code{B} sub-samples}
 
-\item{hc}{output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method}
+\item{hc}{output of \code{\link{hclust}} function. If not provided, \code{\link[fastcluster]{hclust}} is run
+with ward.D2 method}
 
 \item{lambda}{lambda values for group lasso. If not provided, the function generates its own values of lambda}
 
-\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. 
+\item{weightLevel}{a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored.
 If not provided, use 1/(height between 2 successive levels)}
 
 \item{weightSizeGroup}{a vector}
 
-\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss 
+\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss
 (regression) and "logit" logistic loss (classification)}
 
 \item{intercept}{should an intercept be included in the model ?}
 
-\item{verbose}{print some informations}
+\item{verbose}{print some information}
 
-\item{...}{Others parameters for \code{\link{gglasso}} function}
+\item{...}{Others parameters for \code{\link[gglasso]{gglasso}} function}
 }
 \value{
 a stability.MLGL object containing:
@@ -79,7 +80,7 @@ res <- stability.MLGL(X, y)
 
 }
 \references{
-Meinshausen and Buhlmann (2010). Stability selection. 
+Meinshausen and Buhlmann (2010). Stability selection.
 Journal of the Royal Statistical Society: Series B (Statistical Methodology) 72.4, p. 417-473.
 }
 \seealso{

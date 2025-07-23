@@ -4,7 +4,7 @@
 \alias{overlapgglasso}
 \title{Group-lasso with overlapping groups}
 \source{
-Laurent Jacob, Guillaume Obozinski, and Jean-Philippe Vert. 2009. Group lasso with overlap and graph lasso. 
+Laurent Jacob, Guillaume Obozinski, and Jean-Philippe Vert. 2009. Group lasso with overlap and graph lasso.
 In Proceedings of the 26th Annual International Conference on Machine Learning (ICML '09).
 }
 \usage{
@@ -23,7 +23,7 @@ overlapgglasso(
 \arguments{
 \item{X}{matrix of size n*p}
 
-\item{y}{vector of size n. If loss = "logit", elements of y must be in {-1,1}}
+\item{y}{vector of size n. If loss = "logit", elements of y must be in \{-1,1\}}
 
 \item{var}{vector containing the variable to use}
 
@@ -33,12 +33,12 @@ overlapgglasso(
 
 \item{weight}{a vector the weight for each group. Default is the square root of the size of each group}
 
-\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss 
+\item{loss}{a character string specifying the loss function to use, valid options are: "ls" least squares loss
 (regression) and "logit" logistic loss (classification)}
 
 \item{intercept}{should an intercept be included in the model ?}
 
-\item{...}{Others parameters for \code{\link{gglasso}} function}
+\item{...}{Others parameters for \code{\link[gglasso]{gglasso}} function}
 }
 \value{
 a MLGL object containing:
@@ -60,8 +60,8 @@ a MLGL object containing:
 Group-lasso with overlapping groups
 }
 \details{
-Use a group-lasso algorithm (see \code{\link{gglasso}}) to solve a group-lasso with overlapping groups.
-Each variable j of the original matrix \code{X} is paste k(j) times in a new dataset with k(j) the number of 
+Use a group-lasso algorithm (see \code{\link[gglasso]{gglasso}}) to solve a group-lasso with overlapping groups.
+Each variable j of the original matrix \code{X} is paste k(j) times in a new dataset with k(j) the number of
 different groups containing the variable j.
 The new dataset is used to solve the group-lasso with overlapping groups running a group-lasso algorithm.
 }
@@ -79,6 +79,7 @@ y <- 2 * (rowSums(X[, 1:4]) > 0) - 1
 var <- c(1:60, 1:8, 7:15)
 group <- c(rep(1:12, each = 5), rep(13, 8), rep(14, 9))
 res <- overlapgglasso(X, y, var, group, loss = "logit")
+
 }
 \seealso{
 \code{\link{listToMatrix}}

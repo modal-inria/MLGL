@@ -2,12 +2,12 @@
 #' Obtain a sparse matrix of the coefficients of the path
 #'
 #' @param x \code{\link{MLGL}} object
-#' @param row "lambda" or "covariates". If row="covariates", each row of the output matrix represents a covariate else 
+#' @param row "lambda" or "covariates". If row="covariates", each row of the output matrix represents a covariate else
 #' if row="lambda", it represents a value of lambda.
 #'
 #' @return a sparse matrix containing the estimated coefficients for different lambdas
 #'
-#' @details This function can be used with a \code{\link{MLGL}} object to obtain a matrix with all estimated coefficients 
+#' @details This function can be used with a \code{\link{MLGL}} object to obtain a matrix with all estimated coefficients
 #' for the p original variables.
 #' In case of overlapping groups, coefficients from repeated variables are summed.
 #'
@@ -35,8 +35,7 @@ listToMatrix <- function(x, row = c("covariates", "lambda")) {
     }
 
     return(bet)
-  }
-  else {
+  } else {
     bet <- Matrix(0, nrow = length(x$lambda), ncol = x$dim[2])
     for (i in seq_along(x$lambda))
     {

@@ -13,7 +13,7 @@
 
 \item{s}{values of lambda. If NULL, use values from object}
 
-\item{type}{if "fit", return the fitted values for each values of s, if "coefficients", return the estimated 
+\item{type}{if "fit", return the fitted values for each values of s, if "coefficients", return the estimated
 coefficients for each s}
 
 \item{...}{Not used. Other arguments to predict.}
@@ -30,8 +30,8 @@ y <- drop(X[, c(2, 7, 12)] \%*\% c(2, 2, -1)) + rnorm(50, 0, 0.5)
 
 m1 <- MLGL(X, y, loss = "ls")
 predict(m1, newx = X)
-predict(m1, s=3, newx = X)
-predict(m1, s=1:3, newx = X)
+predict(m1, s = 3, newx = X)
+predict(m1, s = 1:3, newx = X)
 
 }
 \seealso{

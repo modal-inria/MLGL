@@ -36,6 +36,7 @@ y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 res <- fullProcess(X, y)
 # Plot the solution path
 plot(res)
+
 }
 \seealso{
 \link{fullProcess}

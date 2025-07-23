@@ -5,14 +5,13 @@
 # @param y response
 # @param group,var vectors describing the group structure. group[i] contains the number of the group associated to the variable var[i]
 #
-# return a list containing 
+# return a list containing
 # - lm the summary of OLS
 # - newdata matrix containing the principal components
 # - y response (same as parameter)
 # - group name of the columns of newdata
 #
 acpOLStest <- function(X, y, group, var) {
-
   # acp + ols
   newdata <- do.call(cbind, tapply(var, group, FUN = function(indvar) {
     respca <- PCA(X[, indvar, drop = FALSE], scale.unit = TRUE, ncp = 1)

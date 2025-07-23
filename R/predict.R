@@ -6,7 +6,7 @@
 #' @param object \code{\link{MLGL}} object
 #' @param newx matrix with new individuals for prediction. If type="coefficients", the parameter has to be NULL
 #' @param s values of lambda. If NULL, use values from object
-#' @param type if "fit", return the fitted values for each values of s, if "coefficients", return the estimated 
+#' @param type if "fit", return the fitted values for each values of s, if "coefficients", return the estimated
 #' coefficients for each s
 #' @param ... Not used. Other arguments to predict.
 #'
@@ -16,14 +16,14 @@
 #'
 #' @author function inspired from predict function from gglasso package by Yi Yang and Hui Zou.
 #'
-#' @examples 
+#' @examples
 #' X <- simuBlockGaussian(n = 50, nBlock = 12, sizeBlock = 5, rho = 0.7)
 #' y <- drop(X[, c(2, 7, 12)] %*% c(2, 2, -1)) + rnorm(50, 0, 0.5)
-#' 
+#'
 #' m1 <- MLGL(X, y, loss = "ls")
 #' predict(m1, newx = X)
-#' predict(m1, s=3, newx = X)
-#' predict(m1, s=1:3, newx = X)
+#' predict(m1, s = 3, newx = X)
+#' predict(m1, s = 1:3, newx = X)
 #'
 #' @seealso \link{MLGL}
 #'
@@ -35,7 +35,7 @@ predict.MLGL <- function(object, newx = NULL, s = NULL, type = c("fit", "coeffic
   if ((type == "fit") & is.null(newx)) {
     stop("newx is missing with type='fit'.")
   }
-  
+
   if (!is.null(s)) {
     if (!is.numeric(s)) {
       stop("s must be a vector of positive real.")
@@ -55,8 +55,7 @@ predict.MLGL <- function(object, newx = NULL, s = NULL, type = c("fit", "coeffic
     lamlist <- lambda.interp(lambda, s)
     if (length(s) == 1) {
       nbeta <- nbeta[, lamlist$left, drop = FALSE] * lamlist$frac + nbeta[, lamlist$right, drop = FALSE] * (1 - lamlist$frac)
-    }
-    else {
+    } else {
       nbeta <- nbeta[, lamlist$left, drop = FALSE] %*% diag(lamlist$frac) + nbeta[, lamlist$right, drop = FALSE] %*% diag(1 - lamlist$frac)
     }
     dimnames(nbeta) <- list(vnames, paste(seq(along = s)))
@@ -66,7 +65,10 @@ predict.MLGL <- function(object, newx = NULL, s = NULL, type = c("fit", "coeffic
     newx <- matrix(newx, nrow = 1)
   }
 
-  return(switch(type, fit = as.matrix(as.matrix(cbind2(1, newx)) %*% nbeta), coefficients = nbeta))
+  return(switch(type,
+    fit = as.matrix(as.matrix(cbind2(1, newx)) %*% nbeta),
+    coefficients = nbeta
+  ))
 }
 
 #'
@@ -77,7 +79,7 @@ predict.MLGL <- function(object, newx = NULL, s = NULL, type = c("fit", "coeffic
 #' @param object \code{\link{cv.MLGL}} object
 #' @param newx matrix with new individuals for prediction. If type="coefficients", the parameter has to be NULL
 #' @param s Either "lambda.1se" or "lambda.min"
-#' @param type if "fit", return the fitted values for each values of s, if "coefficients", return the estimated 
+#' @param type if "fit", return the fitted values for each values of s, if "coefficients", return the estimated
 #' coefficients for each s
 #' @param ... Not used. Other arguments to predict.
 #'
@@ -147,7 +149,10 @@ coef.cv.MLGL <- function(object, s = c("lambda.1se", "lambda.min"), ...) {
   s <- match.arg(s)
 
   # get the desired value of lambda
-  lambda <- switch(s, lambda.1se = object$lambda.1se, lambda.min = object$lambda.min)
+  lambda <- switch(s,
+    lambda.1se = object$lambda.1se,
+    lambda.min = object$lambda.min
+  )
 
   return(predict(object, s = lambda, type = "coefficients"))
 }

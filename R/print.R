@@ -17,6 +17,7 @@
 #' # Apply MLGL method
 #' res <- MLGL(X, y)
 #' print(res)
+#'
 #' @seealso \link{MLGL} \link{summary.MLGL}
 #'
 #' @export
@@ -48,6 +49,7 @@ print.MLGL <- function(x, ...) {
 #' # Apply MLGL method
 #' res <- MLGL(X, y)
 #' summary(res)
+#'
 #' @seealso \link{MLGL} \link{print.MLGL}
 #'
 #' @export
@@ -88,6 +90,7 @@ summary.MLGL <- function(object, ...) {
 #' # Apply MLGL method
 #' res <- fullProcess(X, y)
 #' print(res)
+#'
 #' @method print fullProcess
 #'
 #' @seealso \link{fullProcess} \link{summary.fullProcess}
@@ -124,6 +127,7 @@ print.fullProcess <- function(x, ...) {
 #' # Apply MLGL method
 #' res <- fullProcess(X, y)
 #' summary(res)
+#'
 #' @method summary fullProcess
 #'
 #' @seealso \link{fullProcess} \link{print.fullProcess}
@@ -164,6 +168,7 @@ summary.fullProcess <- function(object, ...) {
 #' res <- MLGL(X, y)
 #' out <- HMT(res, X, y)
 #' print(out)
+#'
 #' @method print HMT
 #'
 #' @seealso \link{HMT} \link{summary.HMT}
@@ -200,6 +205,7 @@ print.HMT <- function(x, ...) {
 #' res <- MLGL(X, y)
 #' out <- HMT(res, X, y)
 #' summary(out)
+#'
 #' @method summary HMT
 #'
 #' @seealso \link{HMT} \link{print.HMT}

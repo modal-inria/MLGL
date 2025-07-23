@@ -13,7 +13,7 @@ selFDR(out, alpha = 0.05, global = TRUE, outer = TRUE)
 
 \item{global}{if FALSE the provided alpha is the desired level control for each family.}
 
-\item{outer}{if TRUE, the FDR is controlled only on outer node (rejected groups without rejected children). 
+\item{outer}{if TRUE, the FDR is controlled only on outer node (rejected groups without rejected children).
 If FALSE, it is controlled on the full tree.}
 }
 \value{
@@ -42,9 +42,10 @@ y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 res <- MLGL(X, y)
 test <- hierarchicalFDR(X, y, res$group[[20]], res$var[[20]])
 sel <- selFDR(test, alpha = 0.05)
+
 }
 \references{
-Yekutieli, Daniel. "Hierarchical False Discovery Rate-Controlling Methodology." 
+Yekutieli, Daniel. "Hierarchical False Discovery Rate-Controlling Methodology."
 Journal of the American Statistical Association 103.481 (2008): 309-16.
 }
 \seealso{

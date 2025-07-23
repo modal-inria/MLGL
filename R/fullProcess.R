@@ -1,4 +1,4 @@
-#' Run hierarchical clustering following by a group-lasso on all the different partition and a hierarchical testing procedure. 
+#' Run hierarchical clustering following by a group-lasso on all the different partition and a hierarchical testing procedure.
 #' Only for linear regression problem.
 #'
 #' @title Full process of MLGL
@@ -6,7 +6,7 @@
 #' @author Quentin Grimonprez
 #' @param X matrix of size n*p
 #' @param y vector of size n.
-#' @param hc output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method. User 
+#' @param hc output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method. User
 #' can also provide the desired method: "single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median".
 #' @param control either "FDR" or "FWER"
 #' @param alpha control level for testing procedure
@@ -53,9 +53,9 @@ fullProcess <- function(X, ...) {
 
 #' @rdname fullProcess
 #' @export
-fullProcess.default <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest, 
-                        hc = NULL, fractionSampleMLGL = 1 / 2, BHclust = 50, nCore = NULL, 
-                        addRoot = FALSE, Shaffer = FALSE, ...) {
+fullProcess.default <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest,
+                                hc = NULL, fractionSampleMLGL = 1 / 2, BHclust = 50, nCore = NULL,
+                                addRoot = FALSE, Shaffer = FALSE, ...) {
   loss <- "ls"
   # if(loss == "logit" & identical(test, partialFtest))
   #   test = partialChisqtest
@@ -93,17 +93,17 @@ fullProcess.default <- function(X, y, control = c("FWER", "FDR"), alpha = 0.05, 
 }
 
 
-#' @param formula an object of class "formula" (or one that can be coerced to that class): a symbolic description of the 
+#' @param formula an object of class "formula" (or one that can be coerced to that class): a symbolic description of the
 #' model to be fitted.
-#' @param data an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing 
+#' @param data an optional data frame, list or environment (or object coercible by as.data.frame to a data frame) containing
 #' the variables in the model. If not found in data, the variables are taken from environment (formula)
 #'
 #'
 #' @rdname fullProcess
 #'
 #' @export
-fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha = 0.05, 
-                                test = partialFtest, hc = NULL, fractionSampleMLGL = 1 / 2, 
+fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha = 0.05,
+                                test = partialFtest, hc = NULL, fractionSampleMLGL = 1 / 2,
                                 BHclust = 50, nCore = NULL, addRoot = FALSE, Shaffer = FALSE, ...) {
   cl <- match.call()
   mf <- match.call(expand.dots = FALSE)
@@ -155,7 +155,7 @@ fullProcess.formula <- function(formula, data, control = c("FWER", "FDR"), alpha
   if (!is.null(hc)) {
     if (is.character(hc)) {
       if (!(hc %in% c("single", "complete", "average", "mcquitty", "ward.D", "ward.D2", "centroid", "median"))) {
-        stop("In character mode, hc must be \"single\", \"complete\", \"average\", \"mcquitty\", \"ward.D\", 
+        stop("In character mode, hc must be \"single\", \"complete\", \"average\", \"mcquitty\", \"ward.D\",
              \"ward.D2\", \"centroid\" or \"median\".")
       }
     } else {

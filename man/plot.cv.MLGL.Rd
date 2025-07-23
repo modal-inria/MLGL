@@ -26,6 +26,7 @@ y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 res <- cv.MLGL(X, y)
 # Plot the cv error curve
 plot(res)
+
 }
 \seealso{
 \link{cv.MLGL}

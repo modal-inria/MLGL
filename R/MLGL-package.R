@@ -7,25 +7,25 @@
 #' @aliases MLGL-package
 #' @name MLGL-package
 #' @description
-#' This package presents a method combining Hierarchical Clustering and Group-lasso. Usually, a single partition of the 
+#' This package presents a method combining Hierarchical Clustering and Group-lasso. Usually, a single partition of the
 #' covariates is used in the group-lasso.
 #' Here, we provide several partitions from the hierarchical tree.
 #'
-#' A post-treatment method based on statistical test (with FWER and FDR control) for selecting the regularization parameter 
+#' A post-treatment method based on statistical test (with FWER and FDR control) for selecting the regularization parameter
 #' and the optimal group for this value is provided.
 #' This method can be applied for the classical group-lasso and our method.
 #'
 #'
 #' @details
-#' The \link{MLGL} function performs the hierarchical clustering and the group-lasso. The post-treatment method can be 
+#' The \link{MLGL} function performs the hierarchical clustering and the group-lasso. The post-treatment method can be
 #' performed with \link{hierarchicalFWER} and \link{selFWER} functions.
 #' The whole process can be run with the \link{fullProcess} function.
 #'
 #'
 #' @author Quentin Grimonprez
 #'
-#' @references   Grimonprez Q, Blanck S, Celisse A, Marot G (2023). "MLGL: An R Package Implementing Correlated Variable 
-#' Selection by Hierarchical Clustering and Group-Lasso." Journal of Statistical Software, 106(3), 1-33. 
+#' @references   Grimonprez Q, Blanck S, Celisse A, Marot G (2023). "MLGL: An R Package Implementing Correlated Variable
+#' Selection by Hierarchical Clustering and Group-Lasso." Journal of Statistical Software, 106(3), 1-33.
 #' doi:10.18637/jss.v106.i03.
 #'
 #' @examples
@@ -38,4 +38,4 @@
 #' @seealso \link{MLGL}, \link{cv.MLGL}, \link{fullProcess}, \link{hierarchicalFWER}
 #'
 #' @keywords package
-NULL
+"_PACKAGE"

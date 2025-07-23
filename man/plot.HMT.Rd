@@ -37,6 +37,7 @@ res <- MLGL(X, y)
 
 out <- HMT(res, X, y)
 plot(out)
+
 }
 \seealso{
 \link{HMT}

@@ -4,19 +4,20 @@
 #'
 #' @author Quentin Grimonprez
 #' @param X matrix of size n*p
-#' @param y vector of size n. If loss = "logit", elements of y must be in {-1,1}
+#' @param y vector of size n. If loss = "logit", elements of y must be in \{-1,1\}
 #' @param B number of bootstrap sample
 #' @param fraction Fraction of data used at each of the \code{B} sub-samples
 #' @param lambda lambda values for group lasso. If not provided, the function generates its own values of lambda
-#' @param hc output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method
-#' @param weightLevel a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. 
+#' @param hc output of \code{\link{hclust}} function. If not provided, \code{\link[fastcluster]{hclust}} is run
+#' with ward.D2 method
+#' @param weightLevel a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored.
 #' If not provided, use 1/(height between 2 successive levels)
 #' @param weightSizeGroup a vector
-#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares loss 
+#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares loss
 #' (regression) and "logit" logistic loss (classification)
 #' @param intercept should an intercept be included in the model ?
-#' @param verbose print some informations
-#' @param ... Others parameters for \code{\link{gglasso}} function
+#' @param verbose print some information
+#' @param ... Others parameters for \code{\link[gglasso]{gglasso}} function
 #'
 #' @return a stability.MLGL object containing:
 #' \describe{
@@ -28,7 +29,7 @@
 #' \item{time}{computation time}
 #' }
 #'
-#' @references Meinshausen and Buhlmann (2010). Stability selection. 
+#' @references Meinshausen and Buhlmann (2010). Stability selection.
 #' Journal of the Royal Statistical Society: Series B (Statistical Methodology) 72.4, p. 417-473.
 #'
 #' @details
@@ -51,9 +52,8 @@
 #' @seealso \link{cv.MLGL}, \link{MLGL}
 #'
 #' @export
-stability.MLGL <- function(X, y, B = 50, fraction = 0.5, hc = NULL, lambda = NULL, weightLevel = NULL, 
+stability.MLGL <- function(X, y, B = 50, fraction = 0.5, hc = NULL, lambda = NULL, weightLevel = NULL,
                            weightSizeGroup = NULL, loss = c("ls", "logit"), intercept = TRUE, verbose = FALSE, ...) {
-
   # check parameters
   loss <- match.arg(loss)
   .checkParameters(X, y, hc, lambda, weightLevel, weightSizeGroup, intercept, verbose, loss, NULL)
@@ -136,8 +136,10 @@ stability.MLGL <- function(X, y, B = 50, fraction = 0.5, hc = NULL, lambda = NUL
     testind <- sample(1:n, floor(n * fraction))
 
     t2 <- proc.time()
-    res <- gglasso(Xb[testind, ], y[testind], prelim$group, lambda = lambda, pf = prelim$weight, 
-                   intercept = intercept, loss = loss, ...)
+    res <- gglasso(Xb[testind, ], y[testind], prelim$group,
+      lambda = lambda, pf = prelim$weight,
+      intercept = intercept, loss = loss, ...
+    )
     t3 <- proc.time()
 
     # record selected groups

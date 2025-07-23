@@ -24,11 +24,11 @@
 #'   \item{test}{Test used in the testing procedure}
 #'   \item{control}{"FDR" or "FWER"}
 #'   \item{time}{Elapsed time}
-#'   \item{hierTest}{list containing the output of the testing function for each lambda. Each element can be used 
+#'   \item{hierTest}{list containing the output of the testing function for each lambda. Each element can be used
 #'   with the \link{selFWER} or \link{selFDR} functions.}
 #'   \item{lambda}{lambda path}
 #'   \item{nGroup}{Number of groups before testing}
-#'   \item{nSelectedGroup}{Numer of groups after testing}
+#'   \item{nSelectedGroup}{Number of groups after testing}
 #' }
 #'
 #' @examples
@@ -45,7 +45,7 @@
 #' @seealso \link{hierarchicalFWER} \link{hierarchicalFDR} \link{selFWER} \link{selFDR}
 #'
 #' @export
-HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest, 
+HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = partialFtest,
                 addRoot = FALSE, Shaffer = FALSE, ...) {
   control <- match.arg(control)
 
@@ -75,11 +75,10 @@ HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = part
         TEST[[i]] <- TEST[[i - 1]]
         REJECT[[i]] <- REJECT[[i - 1]]
         nbReject[i] <- nbReject[i - 1]
-      }
-      else {
+      } else {
         # hierarchical testing and selection
         resTest <- do.call(hierTestFunction, c(list(X, y, res$group[[i]], res$var[[i]], test), extraParams))
-        
+
         resSel <- selFunction(resTest, alpha, ...)
 
         # keep outerNode (need for FDR outer = FALSE, do not change in other cases)
@@ -113,8 +112,8 @@ HMT <- function(res, X, y, control = c("FWER", "FDR"), alpha = 0.05, test = part
 
 
   out <- list(
-    lambdaOpt = res$lambda[indLambdaOpt], selectedGroups = REJECT[[indLambdaOpt[1]]], indLambdaOpt = indLambdaOpt, 
-    lambda = res$lambda, nGroup = res$nGroup, nSelectedGroup = nbReject, group = group, var = var, test = test, 
+    lambdaOpt = res$lambda[indLambdaOpt], selectedGroups = REJECT[[indLambdaOpt[1]]], indLambdaOpt = indLambdaOpt,
+    lambda = res$lambda, nGroup = res$nGroup, nSelectedGroup = nbReject, group = group, var = var, test = test,
     alpha = alpha, reject = REJECT, control = control, time = time, hierTest = TEST
   )
 

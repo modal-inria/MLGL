@@ -23,6 +23,7 @@ y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 # Apply MLGL method
 res <- fullProcess(X, y)
 print(res)
+
 }
 \seealso{
 \link{fullProcess} \link{summary.fullProcess}

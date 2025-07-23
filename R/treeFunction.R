@@ -16,7 +16,7 @@ findRoot2 <- function(hierMatrix) {
   # indices of groups not included in a group
   indTop <- which(colSums(hierMatrix) == 1)
   names(indTop) <- NULL
-  
+
   return(indTop)
 }
 
@@ -74,7 +74,6 @@ leaves <- function(hierMatrix) {
 
 # compute the depth of a tree: the maximum number of levels from root to leaves
 numberLevels <- function(hierMatrix) {
-
   # leaves of the tree
   allLeaves <- leaves(hierMatrix)
 

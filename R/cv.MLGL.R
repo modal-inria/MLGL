@@ -3,19 +3,19 @@
 #' @title  Multi-Layer Group-Lasso with cross V-fold validation
 #' @author Quentin Grimonprez
 #' @param X matrix of size n*p
-#' @param y vector of size n. If loss = "logit", elements of y must be in {-1,1}
+#' @param y vector of size n. If loss = "logit", elements of y must be in \{-1,1\}
 #' @param nfolds number of folds
 #' @param lambda lambda values for group lasso. If not provided, the function generates its own values of lambda
 #' @param hc output of \code{\link{hclust}} function. If not provided, \code{\link{hclust}} is run with ward.D2 method
-#' @param weightLevel a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored. 
+#' @param weightLevel a vector of size p for each level of the hierarchy. A zero indicates that the level will be ignored.
 #' If not provided, use 1/(height between 2 successive levels)
 #' @param weightSizeGroup a vector
-#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares 
+#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares
 #' loss (regression) and "logit" logistic loss (classification)
 #' @param sizeMaxGroup maximum size of selected groups. If NULL, no restriction
 #' @param intercept should an intercept be included in the model ?
-#' @param verbose print some informations
-#' @param ... Others parameters for \code{\link{cv.gglasso}} function
+#' @param verbose print some information
+#' @param ... Others parameters for \code{\link[gglasso]{cv.gglasso}} function
 #'
 #'
 #' @return a cv.MLGL object containing:
@@ -43,12 +43,11 @@
 #' y <- X[, c(2, 7, 12)] %*% c(2, 2, -2) + rnorm(50, 0, 0.5)
 #' # Apply cv.MLGL method
 #' res <- cv.MLGL(X, y)
-#' @seealso \link{MLGL}, \link{stability.MLGL}, \link{predict.cv.gglasso}, \link{coef.cv.MLGL}, \link{plot.cv.MLGL}
+#' @seealso \link{MLGL}, \link{stability.MLGL}, \link[gglasso]{predict.cv.gglasso}, \link{coef.cv.MLGL}, \link{plot.cv.MLGL}
 #'
 #' @export
-cv.MLGL <- function(X, y, nfolds = 5, lambda = NULL, hc = NULL, weightLevel = NULL, weightSizeGroup = NULL, 
+cv.MLGL <- function(X, y, nfolds = 5, lambda = NULL, hc = NULL, weightLevel = NULL, weightSizeGroup = NULL,
                     loss = c("ls", "logit"), intercept = TRUE, sizeMaxGroup = NULL, verbose = FALSE, ...) {
-
   # check parameters
   loss <- match.arg(loss)
   .checkParameters(X, y, hc, lambda, weightLevel, weightSizeGroup, intercept, verbose, loss, sizeMaxGroup)
@@ -106,8 +105,10 @@ cv.MLGL <- function(X, y, nfolds = 5, lambda = NULL, hc = NULL, weightLevel = NU
     cat("Computing group-lasso...")
   }
   t1 <- proc.time()
-  res <- cv.gglasso(Xb, y, prelim$group, pf = prelim$weight, nfolds = nfolds, lambda = lambda, 
-                    intercept = intercept, loss = loss, ...)
+  res <- cv.gglasso(Xb, y, prelim$group,
+    pf = prelim$weight, nfolds = nfolds, lambda = lambda,
+    intercept = intercept, loss = loss, ...
+  )
   t2 <- proc.time()
   tgglasso <- t2 - t1
   if (verbose) {

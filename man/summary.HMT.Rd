@@ -24,6 +24,7 @@ y <- X[, c(2, 7, 12)] \%*\% c(2, 2, -2) + rnorm(50, 0, 0.5)
 res <- MLGL(X, y)
 out <- HMT(res, X, y)
 summary(out)
+
 }
 \seealso{
 \link{HMT} \link{print.HMT}

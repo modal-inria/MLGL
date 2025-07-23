@@ -2,15 +2,15 @@
 #' Group-lasso with overlapping groups
 #'
 #' @param X matrix of size n*p
-#' @param y vector of size n. If loss = "logit", elements of y must be in {-1,1}
+#' @param y vector of size n. If loss = "logit", elements of y must be in \{-1,1\}
 #' @param var vector containing the variable to use
 #' @param group vector containing the associated groups
 #' @param lambda lambda values for group lasso. If not provided, the function generates its own values of lambda
 #' @param weight a vector the weight for each group. Default is the square root of the size of each group
-#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares loss 
+#' @param loss a character string specifying the loss function to use, valid options are: "ls" least squares loss
 #' (regression) and "logit" logistic loss (classification)
 #' @param intercept should an intercept be included in the model ?
-#' @param ... Others parameters for \code{\link{gglasso}} function
+#' @param ... Others parameters for \code{\link[gglasso]{gglasso}} function
 #'
 #' @return a MLGL object containing:
 #' \describe{
@@ -27,13 +27,13 @@
 #'   \item{dim}{dimension of \code{X}}
 #' }
 #'
-#' @details Use a group-lasso algorithm (see \code{\link{gglasso}}) to solve a group-lasso with overlapping groups.
-#' Each variable j of the original matrix \code{X} is paste k(j) times in a new dataset with k(j) the number of 
+#' @details Use a group-lasso algorithm (see \code{\link[gglasso]{gglasso}}) to solve a group-lasso with overlapping groups.
+#' Each variable j of the original matrix \code{X} is paste k(j) times in a new dataset with k(j) the number of
 #' different groups containing the variable j.
 #' The new dataset is used to solve the group-lasso with overlapping groups running a group-lasso algorithm.
 #'
 #'
-#' @source Laurent Jacob, Guillaume Obozinski, and Jean-Philippe Vert. 2009. Group lasso with overlap and graph lasso. 
+#' @source Laurent Jacob, Guillaume Obozinski, and Jean-Philippe Vert. 2009. Group lasso with overlap and graph lasso.
 #' In Proceedings of the 26th Annual International Conference on Machine Learning (ICML '09).
 #'
 #'
@@ -51,6 +51,7 @@
 #' var <- c(1:60, 1:8, 7:15)
 #' group <- c(rep(1:12, each = 5), rep(13, 8), rep(14, 9))
 #' res <- overlapgglasso(X, y, var, group, loss = "logit")
+#'
 #' @seealso \code{\link{listToMatrix}}
 #'
 #' @export

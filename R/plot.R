@@ -1,4 +1,3 @@
-
 #'
 #' Plot the path obtained from \code{\link{MLGL}} function
 #'
@@ -17,6 +16,7 @@
 #' res <- MLGL(X, y)
 #' # Plot the solution path
 #' plot(res)
+#'
 #' @method plot MLGL
 #'
 #' @seealso \link{MLGL}
@@ -76,6 +76,7 @@ plot.MLGL <- function(x, log.lambda = FALSE, lambda.lines = FALSE, ...) {
 #' res <- cv.MLGL(X, y)
 #' # Plot the cv error curve
 #' plot(res)
+#'
 #' @method plot cv.MLGL
 #'
 #' @seealso \link{cv.MLGL}
@@ -204,6 +205,7 @@ plot.stability.MLGL <- function(x, log.lambda = FALSE, threshold = 0.75, ...) {
 #' res <- fullProcess(X, y)
 #' # Plot the solution path
 #' plot(res)
+#'
 #' @method plot fullProcess
 #'
 #' @seealso \link{fullProcess}
@@ -257,6 +259,7 @@ plot.fullProcess <- function(x, log.lambda = FALSE, lambda.lines = FALSE, lambda
 #'
 #' out <- HMT(res, X, y)
 #' plot(out)
+#'
 #' @method plot HMT
 #'
 #' @seealso \link{HMT}

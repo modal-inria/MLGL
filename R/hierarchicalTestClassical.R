@@ -1,4 +1,3 @@
-
 hierarchicalTestingClassical <- function(X, y, hc = NULL, alpha = 0.05, test = partialFtest) {
   # perform hierarchical clustering if not provided
   if (is.null(hc)) {
